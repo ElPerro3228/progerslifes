@@ -13,7 +13,9 @@
     <div th:fragment="header">
         <header>
             <nav>
-
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Logout" />
+                </form>
             </nav>
         </header>
     </div>

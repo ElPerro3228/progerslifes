@@ -7,6 +7,9 @@
 <body>
     <div th:replace="fragments/header :: header"></div>
     <div class="container">
+        <form th:action="@{/registration}" method="get">
+            <input type="submit" value="Registration" >
+        </form>
         <form class="form-signin" action="/login" method="POST">
             <h2 class="form-signin-heading">Please sign in</h2>
             <label for="username" class="sr-only">Username</label>
