@@ -10,9 +10,20 @@
             <div class="starter-template">
                 <h1>ProgersLifes</h1>
                 <h2>
-                    <span th:text="'Hello, ' + ${username}"></span>
+                    <span th:text="'Hello, ' + ${user.username}"></span>
                 </h2>
             </div>
+            <table>
+                <th:block th:each="post : ${user.posts}">
+                    <tr>
+                        <td th:text="${post.user.username}">...</td>
+                        <td th:text="${post.creationDate}">...</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" th:text="${post.text}">...</td>
+                    </tr>
+                </th:block>
+            </table>
         </main>
         <div th:replace="fragments/footer :: footer"></div>
     </body>
