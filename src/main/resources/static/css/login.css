@@ -42,7 +42,7 @@ img {
 }
 .picture{
     width: 50%;
-    background:url(../img/Welcome.png);
+    background:url(/img/Welcome.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

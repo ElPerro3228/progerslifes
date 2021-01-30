@@ -42,7 +42,7 @@ img {
 }
 .picture{
     width: 50%;
-    background:url(../img/reg2.png);
+    background:url(/img/reg2.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
