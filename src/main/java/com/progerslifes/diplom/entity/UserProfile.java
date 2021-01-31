@@ -18,10 +18,10 @@ public class UserProfile {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "profilePicture")
+    @Column(name = "profilepicture")
     private String profilePicture;
 
-    @Column(name = "birthDate")
+    @Column(name = "birthdate")
     private Date birthDate;
 
     @Column(name = "name")

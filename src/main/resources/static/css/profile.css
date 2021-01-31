@@ -1,0 +1,255 @@
+* {
+	padding:0;
+    margin:0;
+}
+body {
+	color:#14171A;
+	font-family: 'Segoe UI', sans-serif;
+	font-weight: 400;
+	width:100%;
+	height:100%;
+}
+a {
+    color: #14171A;
+	text-decoration:none;
+	outline:none;
+}
+img {
+	max-width:100%;
+}
+.wrapper{
+    margin: 0 auto;
+    max-width: 1600px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+/* ---------------- */
+.leftMenu{
+    position: fixed;
+    top: 15px;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+}
+.logo{
+    margin-left: 12px;
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-family: 'Acme', sans-serif;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+.menuItem{
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 22px;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    transition: all .3s linear;
+}
+.menuItem:hover{
+    color: #F2901D;
+    background: #c9771a2c;
+    transform: translateY(-2px);
+}
+.menuItem:hover img{
+    transform: scale(1.1);
+}
+.menuItem img{
+    transition: transform .3s linear;
+    margin-right: 20px;
+}
+.tweetBtn{
+    background: #F2901D;
+    color: white;
+    font-weight: bold;
+    font-style: 17px;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 25px;
+    margin-top: 25px;
+    width: 211px;
+    transition: background .3s linear;
+}
+.tweetBtn:hover{
+    background: #c97617;
+}
+/* ---------------- */
+.main{
+    margin-top: 5px;
+    width: 40%;
+    /* margin-left: 210px; */
+    border-left: 1px solid #E6ECF0;
+    border-right: 1px solid #E6ECF0;
+}
+.title{
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+}
+.name-tweets{
+    margin-left: 35px;
+}
+.title .username{
+    font-size: 19px;
+    font-weight: bold;
+}
+.title img{
+    margin-left: 15px;
+}
+.profile{
+    font-size: 15px;
+}
+.background{
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background: url(../img/avatars/cover.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 65px;
+}
+.background img{
+    position: absolute;
+    bottom: -25%;
+    left: 15px;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+.editBtn{
+    position: absolute;
+    bottom: -25%;
+    right: 5%;
+    background: white;
+    border: 1px solid #F2901D;
+    color: #F2901D;
+    font-weight: bold;
+    font-style: 17px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 25px;
+    margin-top: 25px;
+    transition: background .3s linear;
+}
+.editBtn:hover{
+    background: #f28f1d34;
+}
+.profile .username{
+    margin-left: 15px;
+    font-size: 19px;
+    font-weight: bold;
+}
+.description{
+    font-size: 15px;
+    margin-top: 12px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+}
+.birthday{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+.birthday img{
+    margin-right: 10px;
+}
+.friends{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+}
+.followers{
+    margin-left: 15px;
+}
+.followNumb{
+    font-weight: bold;
+}
+.tweetTitle{
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 10px;
+    padding: 15px 0;
+    color: #F2901D;
+    border-top: 1px solid #E6ECF0;
+    border-bottom: 1px solid #E6ECF0;
+}
+.post{
+    padding: 10px 15px;
+    border-top: 1px solid #E6ECF0;
+    border-bottom: 1px solid #E6ECF0;
+}
+.post-header{
+    display: flex;
+}
+.nameTime .user-name{
+    font-weight: bold;
+    font-size: 16px;
+}
+.content{
+    display: flex;
+    flex-direction: column;
+}
+.user-avatar{
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+}
+.content{
+    margin-left: 10px;
+}
+.post-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.post-content{
+    margin-top: 10px;
+    margin-left: 70px;
+    margin-bottom: 5px; 
+}
+.footerItem{
+    display: flex;
+    align-items: center;
+}
+.rightMenu{
+    padding: 15px;
+    width: 350px;
+}
+.search{
+    background: #E6ECF0;
+    color: #6E7F8D;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    padding: 5px 15px 10px;
+    font-size: 15px;
+}
+.newFriends{
+    margin-top: 20px;
+    background: #F5F8FA;
+    border-radius: 25px;
+    padding: 10px 15px;
+}
+.friendItem{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.friendItem .user-name{
+    margin-left: 10px;
+    font-size: 15px;
+}
