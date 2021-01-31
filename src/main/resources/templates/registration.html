@@ -1,46 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <div th:replace="fragments/header :: header-css"></div>
-    <title>ProgersLifes | Registration</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <title>ProgersLife | Sing In</title>
 </head>
 <body>
-    <div th:replace="fragments/header :: header"></div>
-    <div class="container">
-        <form th:action="@{/registration}" th:object="${user}"
-              method="post" style="max-width: 600px; margin: 0 auto;">
-            <div class="m-3">
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">E-mail: </label>
-                    <div class="col-8">
-                        <input th:field="*{username}" class="form-control" required />
-                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
+    <div class="limiter">
+        <div class="wrapper">
+            <div class="login">
+                <div class="picture"></div>
+                <div class="right">
+                    <div class="forms">
+                        <div class="title">ACCOUNT REGISTER</div>
+                        <form class="form" th:action="@{/registration}" th:object="${user}"
+                        method="post">
+                            <div class="inputs">
+                                <input th:field="*{username}" class="input" type="text" placeholder="User name" required>
+                                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
+                                <input th:field="*{password}" class="input" type="password" placeholder="Password" required minlength="6" maxlength="10">
+                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
+                                <input th:field="*{matchingPassword}" class="input" type="password" placeholder="Repeat Password" required minlength="6" maxlength="10">
+                                <p th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}">Name Error</p>
+                            </div>
+                            <button class="loginBtn" type="submit">Sign Up</button>
+                            <a href="/html/loginPage.html" class="registerBtn">Sign In</a>
+                        </form>
                     </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Password: </label>
-                    <div class="col-8">
-                        <input type="password" th:field="*{password}" class="form-control"
-                               required minlength="6" maxlength="10"/>
-                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Confirm Password: </label>
-                    <div class="col-8">
-                        <input type="password" th:field="*{matchingPassword}" class="form-control"
-                               required minlength="6" maxlength="10"/>
-                        <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
-                    </div>
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
-    <div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
+
