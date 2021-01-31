@@ -1,0 +1,170 @@
+* {
+	padding:0;
+    margin:0;
+}
+body {
+	color:#14171A;
+	font-family: 'Segoe UI', sans-serif;
+	font-weight: 400;
+	width:100%;
+	height:100%;
+}
+a {
+    color: #14171A;
+	text-decoration:none;
+	outline:none;
+}
+img {
+	max-width:100%;
+}
+.wrapper{
+    margin: 0 auto;
+    max-width: 1600px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+/* ---------------- */
+.leftMenu{
+    position: fixed;
+    top: 15px;
+    left: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@media (max-width:1780px){
+    .leftMenu{
+        left: 15%;
+    }
+}
+@media (max-width:1390px){
+    .leftMenu{
+        left: 10%;
+    }
+}
+@media (max-width:1070px){
+    .leftMenu{
+        left: 5%;
+    }
+}
+.up{
+    display: flex;
+    flex-direction: column;
+}
+.logout{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border-radius: 25px;
+    padding: 5px;
+    transition: all .3s linear;
+}
+.logout:hover{
+    background: #f28f1da6;
+}
+.logoutUsername:hover{
+    text-decoration: underline;
+}
+.logoutIcon{
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+    border: none;
+    outline: none;
+    border-radius: 25%;
+    padding: 5px;
+    transition: all .3s linear;
+    background-image: url(/img/menu/logout.png);
+    background-size: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.logoutIcon:hover{
+    background-size: 80%;
+}
+.logoutAvatar{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+.logo{
+    margin-left: 12px;
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    font-family: 'Acme', sans-serif;
+}
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+.menuItem{
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 22px;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    transition: all .3s linear;
+}
+.menuItem:hover{
+    color: #F2901D;
+    background: #c9771a2c;
+    transform: translateY(-2px);
+}
+.menuItem:hover img{
+    transform: scale(1.1);
+}
+.menuItem img{
+    transition: transform .3s linear;
+    margin-right: 20px;
+}
+.tweetBtn{
+    background: #F2901D;
+    color: white;
+    font-weight: bold;
+    font-style: 17px;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: 25px;
+    margin-top: 25px;
+    transition: background .3s linear;
+}
+.tweetBtn:hover{
+    background: #c97617;
+}
+/* //////////////////// */
+.rightMenu{
+    padding: 15px;
+}
+.search{
+    background: #E6ECF0;
+    color: #6E7F8D;
+    border: none;
+    outline: none;
+    border-radius: 25px;
+    padding: 5px 15px 10px;
+    font-size: 15px;
+}
+.newFriends{
+    margin-top: 20px;
+    background: #F5F8FA;
+    border-radius: 25px;
+    padding: 10px 15px;
+}
+.friendItem{
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+.friendItem .user-name{
+    margin-left: 10px;
+    font-size: 15px;
+}
