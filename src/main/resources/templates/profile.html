@@ -45,15 +45,16 @@
             </div>
             <div class="profile">
                 <div class="background">
-                    <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
-                    <a  href="#" class="editBtn">Edit Prifile</a>
+                    <img th:src="${user.userProfile.profilePicture}" alt="" class="user-avatar">
+
+                    <a  th:href="@{/profile/edit}" class="editBtn">Edit Prifile</a>
                 </div>
                 <div class="username" th:text="${user.username}"></div>
                 <div class="username" th:text="${user.userProfile.name}+' '+ ${user.userProfile.surname}"></div>
                 <div class="description" th:text="${user.userProfile.description}"></div>
                 <div class="birthday">
                     <img src="/img/menu/calendar.png" alt="">
-                    <p th:text="${user.userProfile.birthDate}"></p>
+                    <p th:text="${#calendars.format(user.userProfile.birthDate,'dd MMMM yyyy')}"></p>
                 </div>
                 <div class="friends">
                     <div class="following">
@@ -73,7 +74,7 @@
                             <div class="content">
                                 <div class="nameTime">
                                     <span class="user-name" th:text="${post.user.username}"></span>
-                                    <span class="time" th:text="${post.creationDate}">3hrs</span>
+                                    <span class="time" th:text="${#calendars.format(post.creationDate,'dd MMMM yyyy')}">3hrs</span>
                                 </div>
                                 <div class="contentText" th:text="${post.text}">
                                 </div>
