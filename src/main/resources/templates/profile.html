@@ -33,7 +33,7 @@
                 <div class="description" th:text="${user.userProfile.description}"></div>
                 <div class="birthday">
                     <img src="/img/menu/calendar.png" alt="">
-                    <p th:text="${user.userProfile.birthDate}"></p>
+                    <p th:text="${#calendars.format(user.userProfile.birthDate,'dd MMMM yyyy')}"></p>
                 </div>
                 <div class="friends">
                     <div class="following">
@@ -53,7 +53,7 @@
                             <div class="content">
                                 <div class="nameTime">
                                     <span class="user-name" th:text="${post.user.username}"></span>
-                                    <span class="time" th:text="${post.creationDate}">3hrs</span>
+                                    <span class="time" th:text="${#calendars.format(post.creationDate,'dd MMMM yyyy')}">3hrs</span>
                                 </div>
                                 <div class="contentText" th:text="${post.text}">
                                 </div>

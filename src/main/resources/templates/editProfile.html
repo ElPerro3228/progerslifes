@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ProgersLifes | Edit Profile</title>
+</head>
+<body>
+    <form th:action="@{/profile/edit}" th:object="${userProfile}"
+          method="post" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>Name</td>
+                <td><input th:field="*{name}" type="text" th:value="${userProfile.name}"></td>
+            </tr>
+            <tr>
+                <td>Second Name</td>
+                <td><input th:field="*{surname}" type="text" th:value="${userProfile.surname}"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input th:field="*{description}" type="text" th:value="${userProfile.description}"></td>
+            </tr>
+            <tr>
+                <td>Birth Date</td>
+                <td><input th:field="*{birthDate}" type="text" th:value="${#calendars.format(userProfile.birthDate,'yyyy-MM-dd')}"></td>
+            </tr>
+            <tr>
+                <td>Profile Picture</td>
+                <td><input name="image" type="file" accept="image/png, image/jpeg"></td>
+            </tr>
+            <input name="id" type="hidden" th:value="${userProfile.id}" />
+            <input type="submit" text="Save"/>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,6 +1,8 @@
 package com.progerslifes.diplom.services.impl;
 
 import com.progerslifes.diplom.entity.User;
+import com.progerslifes.diplom.entity.UserProfile;
+import com.progerslifes.diplom.repository.user.UserProfileRepository;
 import com.progerslifes.diplom.repository.user.UserRepository;
 import com.progerslifes.diplom.services.UserService;
 import com.progerslifes.diplom.services.exception.UserRegistrationException;
@@ -13,6 +15,8 @@ public class ProgersLifesUserService implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserProfileRepository userProfileRepository;
 
     @Override
     public User saveUser(User user) {
@@ -30,5 +34,10 @@ public class ProgersLifesUserService implements UserService {
             throw new UsernameNotFoundException("user with name " + username + " doesn't exist");
         }
         return dbUser;
+    }
+
+    @Override
+    public UserProfile saveUserProfile(UserProfile userProfile) {
+        return userProfileRepository.save(userProfile);
     }
 }
