@@ -35,21 +35,6 @@ img {
     flex-direction: column;
     justify-content: space-between;
 }
-@media (max-width:1780px){
-    .leftMenu{
-        left: 15%;
-    }
-}
-@media (max-width:1390px){
-    .leftMenu{
-        left: 10%;
-    }
-}
-@media (max-width:1070px){
-    .leftMenu{
-        left: 5%;
-    }
-}
 .up{
     display: flex;
     flex-direction: column;
@@ -167,4 +152,61 @@ img {
 .friendItem .user-name{
     margin-left: 10px;
     font-size: 15px;
+}
+@media (max-width:1780px){
+    .leftMenu{
+        left: 15%;
+    }
+}
+@media (max-width:1390px){
+    .leftMenu{
+        left: 10%;
+    }
+}
+@media (max-width:1070px){
+    .leftMenu{
+        left: 5%;
+    }
+}
+@media (max-width:825px){
+    .rightMenu{
+        display: none;
+    }
+    .main{
+        width: 60%;
+    }
+}
+@media (max-width:550px){
+    .leftMenu{
+        left: 1%;
+    }
+    .menuItem p{
+        display: none;
+    }
+    .logo{
+        display: none;
+    }
+    .tweetBtn{
+        width: 40px;
+        padding: 10px 0;
+    }
+    .tweetBtn::after{
+        content: "P";
+    }
+    .main{
+        margin-left: 50px;
+        width: 80%;
+    }
+    .logoutAvatar{
+        display: none;
+    }
+    .logoutUsername{
+        display: none;
+    }
+    .logoutIcon{
+        margin-left: 0;
+    }
+    .text{
+        display: none;
+    }
 }

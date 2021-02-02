@@ -80,3 +80,14 @@ img {
 .saveBtn:hover{
     background: #f28f1d34;
 }
+@media (max-width:825px){
+    .edit{
+        width: 60%;
+    }
+}
+@media (max-width:550px){
+    .edit{
+        margin-left: 50px;
+        width: 80%;
+    }
+}
