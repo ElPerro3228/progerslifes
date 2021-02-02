@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/left-right.css}">
+</head>
+<body>
+    <div th:fragment="leftmenu">
+        <div class="leftMenu">
+            <div class="up">
+                <p class="logo">ProgersLifes</p>
+                <div class="menu">
+                    <a href="/html/home.html" class="menuItem">
+                        <img src="/img/menu/home.png" alt="">
+                        <p>Home</p> 
+                    </a>
+                    <a href="#" class="menuItem">
+                        <img src="/img/menu/explore.png" alt="">
+                        <p>Explore</p>
+                    </a>
+                    <a href="#" class="menuItem">
+                        <img src="/img/menu/notifications.png" alt="">
+                        <p>Notifications</p>
+                    </a>
+                    <a href="#" class="menuItem">
+                        <img src="/img/menu/messages.png" alt="">
+                        <p>Messages</p>
+                    </a>
+                    <a href="#" class="menuItem">
+                        <img src="/img/menu/bookmarks.png" alt="">
+                        <p>Bookmarks</p>
+                    </a>
+                    <a href="/html/profile.html" class="menuItem">
+                        <img src="/img/menu/profile.png" alt="">
+                        <p>Profile</p>
+                    </a>
+                </div>
+                <a href="#" class="tweetBtn"><p class="text">New Post</p></a>
+            </div>
+            <div class="down">
+                <div class="logout">
+                    <img th:src="${user.userProfile.profilePicture}" alt="" class="logoutAvatar">
+                    <a href="/html/profile.html" class="logoutUsername" th:text="${user.username}">Norman</a>
+                    <form th:action="@{/logout}" method="post">
+                        <input type="submit" class="logoutIcon" value=""/>
+                    </form>
+                </div>
+            </div> 
+        </div>
+    </div>
+</body>
+</html>

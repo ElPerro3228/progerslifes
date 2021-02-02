@@ -144,6 +144,9 @@ img {
     line-height: 1.4;
     color: rgb(61, 103, 194);
     text-transform: uppercase;
+    border: none;
+    background: none;
+    outline: none;
 }
 @media (max-width:800px){
     .login{

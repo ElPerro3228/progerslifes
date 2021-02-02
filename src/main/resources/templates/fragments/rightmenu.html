@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/left-right.css}">
+</head>
+<body>
+    <div th:fragment="rightmenu">
+        <div class="rightMenu">
+            <input type="text" class="search" placeholder="Search"></input>
+            <div class="newFriends">
+                <div class="friendsTitle">You mught like</div>
+                <div class="friendItem">
+                    <img src="/img/avatars/avatar2.png" alt="" class="user-avatar">
+                    <div class="user-name">StasLog</div>
+                </div>
+                <div class="friendItem">
+                    <img src="/img/avatars/avatar3.png" alt="" class="user-avatar">
+                    <div class="user-name">VladPok</div>
+                </div>
+                <div class="friendItem">
+                    <img src="/img/avatars/avatar4.png" alt="" class="user-avatar">
+                    <div class="user-name">DimOn</div>
+                </div>
+             </div>
+        </div>
+    </div>
+</body>
+</html>
