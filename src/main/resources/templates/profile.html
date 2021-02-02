@@ -24,7 +24,7 @@
             <div class="profile">
                 <div class="background">
                     <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
-                    <a  href="/html/editprofile.html" class="editBtn">Edit Prifile</a>
+                    <a  th:href="@{/profile/edit}" class="editBtn">Edit Profile</a>
                 </div>
                 <p>
                     <span class="username" th:text="${user.username}"></span> 

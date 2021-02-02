@@ -14,23 +14,20 @@
     <div class="wrapper">
         <div th:replace="fragments/leftmenu :: leftmenu"></div>
         <div class="edit">
-            <form class="form" th:action="@{/edit}" th:object="${user}" method="post">
+            <form th:action="@{/profile/edit}" th:object="${userProfile}" method="post" enctype="multipart/form-data" class="form">
                 <div class="title">
                     <a href="/html/profile.html" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
                     <p>Edit Profile</p>
                     <input type="submit" class="saveBtn" value="Save"/>
                 </div>
                 <div class="inputs">
-                    <input th:field="*{username}" class="input" type="text" placeholder="User name">
-                    <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
+                    <input name="image" type="file" accept="image/png, image/jpeg">
                     <input th:field="*{name}" class="input" type="text" placeholder="Name">
                     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
                     <input th:field="*{surname}" class="input" type="text" placeholder="Surname">
                     <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Name Error</p>
                     <input th:field="*{description}" class="input" type="text" placeholder="Description">
                     <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</p>
-                    <input th:field="*{password}" class="input" type="password" placeholder="Password" minlength="6" maxlength="10">
-                    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
                 </div>
             </form>
         </div>
