@@ -11,6 +11,9 @@
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
     <title>ProgersLife | Home</title>
 </head>
+<!--/*@thymesVar id="user" type="com.progerslifes.diplom.entity.User"*/-->
+<!--/*@thymesVar id="postTemplate" type="com.progerslifes.diplom.facades.dto.PostDTO"*/-->
+
 <body>
     <div class="wrapper">
         <div th:replace="fragments/leftmenu :: leftmenu"></div>
@@ -20,10 +23,10 @@
                     <div class="username">Home</div>
                 </div>
             </div>
-            <form action="" class="newPost">
+            <form th:action="@{/post}" class="newPost" method="post" th:object="${postTemplate}">
                 <div class="create-post-body">
-                    <img src="/img/avatars/avatar1.png" alt="" class="user-avatar">
-                    <textarea class="create-post-input" maxlength="200" rows="5">What's New
+                    <img th:src="${user.userProfile.profilePicture}" alt="" class="user-avatar">
+                    <textarea th:field="*{text}" class="create-post-input" maxlength="200" rows="5">What's New
                     </textarea>
                 </div>
                 <div class="postImgs">
@@ -37,10 +40,10 @@
                 </div>
             </form>
             <div class="posts">
-                <th:block th:each="post : ${user.posts}">
+                <th:block th:each="post : ${posts}">
                     <div class="post">
-                        <a href="/profile.html" class="post-header">
-                            <img th:src="${user.userProfile.profilePicture}" alt="" class="user-avatar">
+                        <a th:href="@{/profile}" class="post-header">
+                            <img th:src="${post.user.userProfile.profilePicture}" alt="" class="user-avatar">
                             <div class="content">
                                 <div class="nameTime">
                                     <span class="user-name" th:text="${post.user.username}"></span>
