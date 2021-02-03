@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/edit.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
     <title>ProgersLife | Edit Profile</title>
 </head>
@@ -16,18 +17,24 @@
         <div class="edit">
             <form th:action="@{/profile/edit}" th:object="${userProfile}" method="post" enctype="multipart/form-data" class="form">
                 <div class="title">
-                    <a href="/html/profile.html" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
+                    <a th:href="@{/profile}" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
                     <p>Edit Profile</p>
                     <input type="submit" class="saveBtn" value="Save"/>
                 </div>
                 <div class="inputs">
-                    <input name="image" type="file" accept="image/png, image/jpeg">
-                    <input th:field="*{name}" class="input" type="text" placeholder="Name">
+                    <input name="image" type="file" class="input" accept="image/png, image/jpeg">
+                    <label for="name">Name</label>
+                    <input th:field="*{name}" class="input" type="text" th:value="${userProfile.name}">
                     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
-                    <input th:field="*{surname}" class="input" type="text" placeholder="Surname">
+                    <label for="surname">Surname</label>
+                    <input th:field="*{surname}" class="input" type="text" th:value="${userProfile.surname}">
                     <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Name Error</p>
-                    <input th:field="*{description}" class="input" type="text" placeholder="Description">
+                    <label for="description">Description</label>
+                    <input th:field="*{description}" class="input" type="text" th:value="${userProfile.description}">
                     <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</p>
+                    <label for="birthDate">Birth Date</label>
+                    <input th:field="*{birthDate}" class="input" type="datetime" th:value="${#calendars.format(userProfile.birthDate,'dd-MM-yyyy')}">
+                    <input name="id" type="hidden" th:value="${userProfile.id}" />
                 </div>
             </form>
         </div>

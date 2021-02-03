@@ -40,8 +40,7 @@ img {
     flex-direction: column;
 }
 .logout{
-    display: flex;
-    align-items: center;
+    display: inline-block;
     margin-bottom: 20px;
     border-radius: 25px;
     padding: 5px;
@@ -54,9 +53,8 @@ img {
     text-decoration: underline;
 }
 .logoutIcon{
-    width: 25px;
-    height: 25px;
-    margin-left: 20px;
+    width: 30px;
+    height: 30px;
     border: none;
     outline: none;
     border-radius: 25%;
@@ -70,11 +68,11 @@ img {
 .logoutIcon:hover{
     background-size: 80%;
 }
-.logoutAvatar{
+/* .logoutAvatar{
     width: 50px;
     height: 50px;
     margin-right: 10px;
-}
+} */
 .logo{
     margin-left: 12px;
     font-size: 25px;

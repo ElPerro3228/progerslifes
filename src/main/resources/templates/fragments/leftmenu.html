@@ -14,7 +14,7 @@
             <div class="up">
                 <p class="logo">ProgersLifes</p>
                 <div class="menu">
-                    <a href="/html/home.html" class="menuItem">
+                    <a th:href="@{/home}" class="menuItem">
                         <img src="/img/menu/home.png" alt="">
                         <p>Home</p> 
                     </a>
@@ -34,7 +34,7 @@
                         <img src="/img/menu/bookmarks.png" alt="">
                         <p>Bookmarks</p>
                     </a>
-                    <a href="/html/profile.html" class="menuItem">
+                    <a th:href="@{/profile}" class="menuItem">
                         <img src="/img/menu/profile.png" alt="">
                         <p>Profile</p>
                     </a>
@@ -43,8 +43,6 @@
             </div>
             <div class="down">
                 <div class="logout">
-                    <img th:src="${user.userProfile.profilePicture}" alt="" class="logoutAvatar">
-                    <a href="/html/profile.html" class="logoutUsername" th:text="${user.username}">Norman</a>
                     <form th:action="@{/logout}" method="post">
                         <input type="submit" class="logoutIcon" value=""/>
                     </form>
