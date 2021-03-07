@@ -9,6 +9,7 @@ import com.progerslifes.diplom.facades.dto.UserProfileDTO;
 import com.progerslifes.diplom.facades.user.UserFacade;
 import com.progerslifes.diplom.services.UploadService;
 import com.progerslifes.diplom.services.UserService;
+import com.progerslifes.diplom.services.builders.UserProfileBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,6 +37,9 @@ public class ProgerLifesUserFacade implements UserFacade {
     @Autowired
     private UploadService uploadService;
 
+    @Autowired
+    private UserProfileBuilder userProfileBuilder;
+
     @Value("${user.profile.picture.dir}")
     private String imagesDir;
 
@@ -45,13 +49,14 @@ public class ProgerLifesUserFacade implements UserFacade {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRole("USER");
         user.setEnabled(true);
+        user.setUserProfile(createUserDefaultProfile(user));
         userService.saveUser(user);
     }
 
     @Override
     public void updateUserProfile(UserProfileDTO userProfileDTO, MultipartFile image) throws IOException {
         UserProfile userProfile = userProfileDTOConverter.convert(userProfileDTO);
-        if (image != null) {
+        if ((!image.isEmpty()) && (image.getSize() != 0)) {
             saveProfilePicture(image, userProfile);
         }
         userService.saveUserProfile(userProfile);
@@ -62,5 +67,11 @@ public class ProgerLifesUserFacade implements UserFacade {
         uploadService.saveFile(imagesDir, imageName, image);
         userProfile.setProfilePicture(uploadService.getPath(imagesDir, imageName));
         userService.saveUserProfile(userProfile);
+    }
+
+    private UserProfile createUserDefaultProfile(User user) {
+        userProfileBuilder.setName(user.getUsername());
+        userProfileBuilder.setUser(user);
+        return userProfileBuilder.getResult();
     }
 }

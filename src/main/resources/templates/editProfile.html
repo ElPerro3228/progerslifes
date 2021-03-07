@@ -22,7 +22,7 @@
                     <input type="submit" class="saveBtn" value="Save"/>
                 </div>
                 <div class="inputs">
-                    <input name="image" type="file" class="input" accept="image/png, image/jpeg">
+                    <input name="image" type="file" th:value="${userProfile.profilePicture}" class="input" accept="image/png, image/jpeg">
                     <label for="name">Name</label>
                     <input th:field="*{name}" class="input" type="text" th:value="${userProfile.name}">
                     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
@@ -35,6 +35,7 @@
                     <label for="birthDate">Birth Date</label>
                     <input th:field="*{birthDate}" class="input" type="datetime" th:value="${#calendars.format(userProfile.birthDate,'dd-MM-yyyy')}">
                     <input name="id" type="hidden" th:value="${userProfile.id}" />
+                    <input name="profilePicture" type="hidden" th:value="${userProfile.profilePicture}" />
                 </div>
             </form>
         </div>
