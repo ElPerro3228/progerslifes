@@ -19,13 +19,22 @@
                         <form class="form" th:action="@{/registration}" th:object="${user}"
                         method="post">
                             <div class="inputs">
-                                <input th:field="*{username}" class="input" type="text" placeholder="User name" required>
-                                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
-                                <input th:field="*{password}" class="input" type="password" placeholder="Password" required minlength="6" maxlength="10">
-                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
-                                <input th:field="*{matchingPassword}" class="input" type="password" placeholder="Repeat Password" required minlength="6" maxlength="10">
-                                <p th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}">Name Error</p>
+                                <div class="input-block">
+                                    <label>Username</label>
+                                    <input th:field="*{username}" class="input" type="text" required>
+                                </div>
+                                <div class="input-block">
+                                    <label>Password</label>
+                                    <input th:field="*{password}" class="input" type="password" required minlength="6" maxlength="10">
+                                </div>
+                                <div class="input-block">
+                                    <label>Repeat Password</label>
+                                    <input th:field="*{matchingPassword}" class="input" type="password" required minlength="6" maxlength="10">
+                                </div>
                             </div>
+                                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
+                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
+                                <p th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}">Name Error</p>
                             <button class="loginBtn" type="submit">Sign Up</button>
                             <a href="/html/loginPage.html" class="registerBtn">Sign In</a>
                         </form>

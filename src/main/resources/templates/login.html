@@ -18,8 +18,13 @@
                         <div class="title">ACCOUNT LOGIN</div>
                         <form class="form" th:action="@{/login}" method="POST">
                             <div class="inputs">
-                                <input name="username" class="input" type="text" placeholder="User name" required>
-                                <input name="password" class="input" type="password" placeholder="Password" required>
+                                <div class="input-block">
+                                    <label>login</label>
+                                    <input name="username" class="input" type="text" required>
+                                </div>
+                                <div class="input-block">
+                                    <label>Password</label>
+                                    <input name="password" class="input" type="password" required>                                </div>
                             </div>
                             <button class="loginBtn" type="submit">Sign in</button>
                             <label>

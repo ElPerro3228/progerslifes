@@ -1,22 +1,22 @@
 * {
-	padding:0;
+    padding:0;
     margin:0;
 }
 body {
-	color:#555555;
-	font-family: 'Poppins', sans-serif;
-	font-weight: 400;
-	position:relative;
-	width:100%;
-	height:100%;
-	overflow: hidden;
+    color:#555555;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    position:relative;
+    width:100%;
+    height:100%;
+    /*overflow: hidden;*/
 }
 a {
-	text-decoration:none;
-	outline:none;
+    text-decoration:none;
+    outline:none;
 }
 img {
-	max-width:100%;
+    max-width:100%;
 }
 .limiter{
     width: 100%;
@@ -28,22 +28,23 @@ img {
     justify-content: center;
     align-items: center;
     background: #e5edee;
-    padding: 15px;
 }
 .login{
     border-radius: 15px;
     box-shadow: 5px 5px 35px rgba(0, 0, 0, 0.432);
     background: white;
-    width: 1170px;
-    overflow: hidden;
+    max-width: 1170px;
+    width: 100%;
+    max-height: 860px;
+    height: 100vh;
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
+    align-items: center;
 }
 .picture{
     width: 50%;
-    background:url(/img/Welcome.png);
-    background-size: contain;
+    height: 100%;
+    background:url(../img/Welcome.png);
+    background-size: 80%;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
@@ -65,7 +66,11 @@ img {
     width: 50%;
     display: flex;
     flex-direction: column;
-    padding: 303px 65px 40px 65px;
+    /* padding: 303px 65px 40px 65px; */
+}
+.forms{
+    width: 80%;
+    margin: 0 auto;
 }
 .form{
     display: flex;
@@ -73,8 +78,38 @@ img {
 }
 .inputs{
     display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.input-block{
+    margin: 10px 0;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 5px;
+}
+.input-block label{
+    font-size: 13px;
+    margin-bottom: 5px;
+    color:rgb(61, 103, 194);
 }
 .input{
+    border: none;
+    box-sizing: border-box;
+    width: 90%;
+    display: block;
+    background: transparent;
+    font-size: 18px;
+    color: #666666;
+    line-height: 1.2;
+    outline-style: none;
+    padding-bottom: 5px;
+}
+.inputs{
+    display: flex;
+}
+/* .input{
     border-radius: 5px;
     width: 50%;
     display: block;
@@ -84,7 +119,7 @@ img {
     line-height: 1.2;
     padding: 10px 25px;
     border: 1px solid rgb(211, 211, 211);
-}
+} */
 .title{
     font-size: 20px;
     color: #555555;
@@ -117,25 +152,27 @@ img {
     line-height: 1.2;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all 0.4s;
     margin-top: 20px;
     margin-bottom: 5px;
     transition: all .3s linear;
 }
 .loginBtn:hover{
+    cursor: pointer;
     background: rgb(19, 41, 87);
 }
 .registerBtn:hover{
+    cursor: pointer;
     color: rgb(19, 41, 87);
 }
 .textBlue:hover{
+    cursor: pointer;
     color: rgb(19, 41, 87);
 }
 .fogot{
     width: 100%;
     text-align: center;
     padding-top: 20px;
-    padding-bottom: 130px;
+    /* padding-bottom: 130px; */
 }
 .registerBtn{
     width: 100%;
@@ -143,22 +180,27 @@ img {
     font-size: 15px;
     line-height: 1.4;
     color: rgb(61, 103, 194);
+    margin-top: 30px;
     text-transform: uppercase;
     border: none;
     background: none;
     outline: none;
 }
 @media (max-width:800px){
+    .title{
+        margin-top: 30px;
+    }
     .login{
         flex-direction: column;
         align-items: center;
     }
     .picture{
         width: 100%;
-        height: 300px;
+        height: 280px;
+        background-size: 60%;
     }
     .right{
-        padding: 30px;
+        /* padding: 30px; */
         width: 100%;
     }
     .inputs{
@@ -172,9 +214,6 @@ img {
     .loginBtn{
         width: 50%;
     }
-    .fogot{
-        padding-bottom: 30px;
-    }
     form{
         display: flex;
         flex-direction: column;
@@ -182,7 +221,16 @@ img {
     }
 }
 @media (max-width:400px){
+    .login{
+        justify-content: center;
+    }
     .picture{
         display: none;
+    }
+    .inputs{
+        width: 90%;
+    }
+    .loginBtn{
+        width: 90%;
     }
 }

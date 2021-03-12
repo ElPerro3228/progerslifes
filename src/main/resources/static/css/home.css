@@ -24,7 +24,6 @@
     margin: 0 10px;
 }
 .create-post-input{
-    place-content: "What's New";
     box-shadow: 1px 1px 5px #6e7f8d70;
     border-radius: 25px;
     margin-left: 15px;
@@ -58,7 +57,7 @@
     border: 1px solid #F2901D;
     color: #F2901D;
     font-weight: bold;
-    font-style: 17px;
+    font-size: 17px;
     text-align: center;
     padding: 10px 15px;
     border-radius: 25px;
