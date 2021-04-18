@@ -42,7 +42,7 @@
             <div class="posts">
                 <th:block th:each="post : ${posts}">
                     <div class="post">
-                        <a th:href="@{/profile}" class="post-header">
+                        <a th:href="@{/profile}+${user.id}" class="post-header">
                             <img th:src="${post.user.userProfile.profilePicture}" alt="" class="user-avatar">
                             <div class="content">
                                 <div class="nameTime">

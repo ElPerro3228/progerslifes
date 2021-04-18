@@ -211,4 +211,32 @@ img {
     .text{
         display: none;
     }
+    [data-tooltip]::after{
+        left: -15%;
+    }
+}
+
+/*data-tooltip*/
+[data-tooltip] {
+    position: relative; /* Относительное позиционирование */
+}
+[data-tooltip]::after {
+    content: attr(data-tooltip); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 30%;
+    border-radius: 5px;
+    font-size: 15px;
+    bottom: 0; /* Положение подсказки */
+    background: #ffe5c2; /* Синий цвет фона */
+    color: #000000; /* Цвет текста */
+    padding: 5px; /* Поля вокруг текста */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+    pointer-events: none; /* Подсказка */
+    opacity: 0; /* Подсказка невидима */
+    transition: 1s; /* Время появления подсказки */
+    z-index: 9999;
+}
+[data-tooltip]:hover::after {
+    opacity: 1; /* Показываем подсказку */
+    bottom: -22px; /* Положение подсказки */
 }
