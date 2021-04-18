@@ -7,10 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -40,6 +43,20 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
+
+    @ManyToMany
+    @JoinTable(name="relationship",
+            joinColumns=@JoinColumn(name="user_one_id"),
+            inverseJoinColumns=@JoinColumn(name="user_two_id")
+    )
+    private List<User> subscriptions;
+
+    @ManyToMany
+    @JoinTable(name="relationship",
+            joinColumns=@JoinColumn(name="user_two_id"),
+            inverseJoinColumns=@JoinColumn(name="user_one_id")
+    )
+    private List<User> subscribers;
 
     public User() {
     }
@@ -98,5 +115,35 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public List<User> getSubscriptions() {
+        return subscriptions;
+    }
+
+    public void setSubscriptions(List<User> subscriptions) {
+        this.subscriptions = subscriptions;
+    }
+
+    public List<User> getSubscribers() {
+        return subscribers;
+    }
+
+    public void setSubscribers(List<User> subscribers) {
+        this.subscribers = subscribers;
+    }
+
+    public void addSubscriber(User user) {
+        if (subscribers == null) {
+            subscribers = new ArrayList<>();
+        }
+        subscribers.add(user);
+    }
+
+    public void addSubscription(User user) {
+        if (subscriptions == null) {
+            subscriptions = new ArrayList<>();
+        }
+        subscriptions.add(user);
     }
 }
