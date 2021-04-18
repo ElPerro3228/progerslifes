@@ -34,9 +34,13 @@ public class MvcConfig implements WebMvcConfigurer {
         registry
                 .addResourceHandler("/" + dirName + "/**",
                         "/css/**",
+                        "/library/materialize/css/**",
+                        "/library/materialize/js/**",
                         "/img/**")
                 .addResourceLocations("file:/"+ uploadPath + "/",
                         "classpath:/static/css/",
+                        "classpath:/static/library/materialize/css/",
+                        "classpath:/static/library/materialize/js/",
                         "classpath:/static/img/",
                         "classpath:/static/img/default/");
     }
