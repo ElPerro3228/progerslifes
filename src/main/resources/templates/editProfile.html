@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/edit.css}">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
@@ -17,23 +18,39 @@
         <div class="edit">
             <form th:action="@{/profile/edit}" th:object="${userProfile}" method="post" enctype="multipart/form-data" class="form">
                 <div class="title">
-                    <a th:href="@{/profile}" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
+                    <a th:href="@{/home}" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
                     <p>Edit Profile</p>
                     <input type="submit" class="saveBtn" value="Save"/>
                 </div>
                 <div class="inputs">
-                    <input name="image" type="file" th:value="${userProfile.profilePicture}" class="input" accept="image/png, image/jpeg">
-                    <label for="name">Name</label>
-                    <input th:field="*{name}" class="input" type="text" th:value="${userProfile.name}">
+                    <div class="example-1" data-img="">
+                        <div class="form-group">
+                            <label class="label">
+                                <i class="material-icons">attach_file</i>
+                                <span class="title-input">Выберите автарку</span>
+                                <input name="image" type="file" th:value="${userProfile.profilePicture}" accept="image/png, image/jpeg">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-block">
+                        <label>Name</label>
+                        <input th:field="*{name}" class="input" type="text" th:value="${userProfile.name}">
+                    </div>
                     <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
-                    <label for="surname">Surname</label>
-                    <input th:field="*{surname}" class="input" type="text" th:value="${userProfile.surname}">
+                    <div class="input-block">
+                        <label>Surname</label>
+                        <input th:field="*{surname}" class="input" type="text" th:value="${userProfile.surname}">
+                    </div>
                     <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Name Error</p>
-                    <label for="description">Description</label>
-                    <input th:field="*{description}" class="input" type="text" th:value="${userProfile.description}">
+                    <div class="input-block">
+                        <label>Description</label>
+                        <input th:field="*{description}" class="input" type="text" th:value="${userProfile.description}">
+                    </div>
                     <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Name Error</p>
-                    <label for="birthDate">Birth Date</label>
-                    <input th:field="*{birthDate}" class="input" type="datetime" th:value="${#calendars.format(userProfile.birthDate,'dd-MM-yyyy')}">
+                    <div class="input-block">
+                        <label>Birth Date</label>
+                        <input th:field="*{birthDate}" class="input" type="datetime" th:value="${#calendars.format(userProfile.birthDate,'yyyy-MM-dd')}">
+                    </div>
                     <input name="id" type="hidden" th:value="${userProfile.id}" />
                     <input name="profilePicture" type="hidden" th:value="${userProfile.profilePicture}" />
                 </div>

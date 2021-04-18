@@ -6,6 +6,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/static/library/css/materialize.min.css"  media="screen,projection"/>
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
 </head>
 <body>
@@ -14,27 +16,27 @@
             <div class="up">
                 <p class="logo">ProgersLifes</p>
                 <div class="menu">
-                    <a th:href="@{/home}" class="menuItem">
+                    <a th:href="@{/home}" class="menuItem" data-tooltip="Home">
                         <img src="/img/menu/home.png" alt="">
                         <p>Home</p> 
                     </a>
-                    <a href="#" class="menuItem">
+                    <a href="#" class="menuItem" data-tooltip="Explore">
                         <img src="/img/menu/explore.png" alt="">
                         <p>Explore</p>
                     </a>
-                    <a href="#" class="menuItem">
+                    <a href="#" class="menuItem" data-tooltip="Notifications">
                         <img src="/img/menu/notifications.png" alt="">
                         <p>Notifications</p>
                     </a>
-                    <a href="#" class="menuItem">
+                    <a th:href="@{/chat}" class="menuItem" data-tooltip="Messages">
                         <img src="/img/menu/messages.png" alt="">
                         <p>Messages</p>
                     </a>
-                    <a href="#" class="menuItem">
+                    <a href="#" class="menuItem" data-tooltip="Bookmarks">
                         <img src="/img/menu/bookmarks.png" alt="">
                         <p>Bookmarks</p>
                     </a>
-                    <a th:href="@{/profile}" class="menuItem">
+                    <a th:href="@{/profile}" class="menuItem" data-tooltip="Profile">
                         <img src="/img/menu/profile.png" alt="">
                         <p>Profile</p>
                     </a>
@@ -50,5 +52,6 @@
             </div> 
         </div>
     </div>
+    <script type="text/javascript" src="/static/library/js/materialize.min.js"></script>
 </body>
 </html>

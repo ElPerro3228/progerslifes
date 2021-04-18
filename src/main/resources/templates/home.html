@@ -26,7 +26,7 @@
             <form th:action="@{/post}" class="newPost" method="post" th:object="${postTemplate}">
                 <div class="create-post-body">
                     <img th:src="${user.userProfile.profilePicture}" alt="" class="user-avatar">
-                    <textarea th:field="*{text}" class="create-post-input" maxlength="200" rows="5">What's New
+                    <textarea th:field="*{text}" class="create-post-input" maxlength="200" rows="5" placeholder="What's new?">
                     </textarea>
                 </div>
                 <div class="postImgs">
@@ -42,7 +42,7 @@
             <div class="posts">
                 <th:block th:each="post : ${posts}">
                     <div class="post">
-                        <a th:href="@{/profile}" class="post-header">
+                        <a th:href="@{/profile/user.id}" class="post-header">
                             <img th:src="${post.user.userProfile.profilePicture}" alt="" class="user-avatar">
                             <div class="content">
                                 <div class="nameTime">

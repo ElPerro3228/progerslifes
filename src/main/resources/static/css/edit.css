@@ -52,26 +52,73 @@ img {
     flex-direction: column;
     margin-top: 20px;
 }
-.input{
-    margin-bottom: 15px;
+.input-block{
+    margin: 10px 25px;
+    border: 1px solid rgb(211, 211, 211);
     border-radius: 5px;
     box-sizing: border-box;
     width: 90%;
-    margin-left: 15px;
+    padding-left: 5px;
+}
+.input-block label{
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+.input{
+    border: none;
+    box-sizing: border-box;
+    width: 90%;
     display: block;
     background: transparent;
     font-size: 18px;
     color: #666666;
     line-height: 1.2;
-    padding: 10px 25px;
-    border: 1px solid rgb(211, 211, 211);
+    outline-style: none;
+}
+.example-1{
+    margin-left: 10px;
+}
+.example-1 .form-group{
+    padding:5px;
+    margin:5px;
+}
+.example-1 input[type=file]{
+    outline:0;
+    opacity:0;
+    pointer-events:none;
+    user-select:none;
+}
+.example-1 .label{
+    width:120px;
+    border:2px dashed grey;
+    border-radius:5px;
+    display:block;
+    padding:10px;
+    transition:border 300ms ease;
+    cursor:pointer;
+    text-align:center
+}
+.example-1 .label i{
+    display:block;
+    font-size:32px;
+    padding-bottom:16px;
+}
+.example-1 .label i,.example-1 .label .title{
+    color:grey;
+    transition:200ms color;
+}
+.example-1 .label:hover{
+    border:2px solid #000;
+}
+.example-1 .label:hover i,.example-1 .label:hover .title{
+    color:#000;
 }
 .saveBtn{
     background: white;
     border: 1px solid #F2901D;
     color: #F2901D;
     font-weight: bold;
-    font-style: 17px;
+    font-size: 17px;
     text-align: center;
     padding: 10px 15px;
     border-radius: 25px;

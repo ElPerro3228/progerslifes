@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" th:href="@{/css/left-right.css}"> -->
+    <link rel="stylesheet" th:href="/css/profile.css">
+    <link rel="stylesheet" th:href="/css/chat.css">
+    <link rel="stylesheet" th:href="/css/left-right.css">
+    <title>ProgersLife | Chat</title>
+</head>
+<!--/*@thymesVar id="user" type="com.progerslifes.diplom.entity.User"*/-->
+<!--/*@thymesVar id="postTemplate" type="com.progerslifes.diplom.facades.dto.PostDTO"*/-->
+
+<body>
+    <div class="wrapper">
+        <div th:replace="fragments/leftmenu :: leftmenu"></div>
+        <div class="main">
+            <div class="chats">
+                <div class="top">
+                    <div class="titleHeader">Messages</div>
+                    <img src="/img/menu/messages.png" class="titleBtn"/>
+                </div>
+                <div class="search">
+                    <form method="post">
+                        <img src="/img/common/search.png" alt="">
+                        <input type="text" class="search" value=""/>
+                    </form>
+                </div>
+                <div class="chatsList">
+                    <a href="#" class="chat">
+                        <img src="/img/avatars/avatar1.png" alt="" class="user-avatar">
+                        <div class="content">
+                            <div class="nameTime">
+                                <span class="user-name">Stas Logvin</span>
+                                <span class="time">3hrs</span>
+                            </div>
+                            <div class="contentText" >
+                                Последнее сообщение
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="chat">
+                        <img src="/img/avatars/avatar2.png" alt="" class="user-avatar">
+                        <div class="content">
+                            <div class="nameTime">
+                                <span class="user-name">Pavel Sviridov</span>
+                                <span class="time">2hrs</span>
+                            </div>
+                            <div class="contentText" >
+                                fffffffff
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="messages">
+                <div class="top">
+                    <div class="topHeader">
+                        <img src="/img/avatars/avatar1.png" alt="" class="user-avatar">
+                        <div class="content">
+                            <div class="nameTime">
+                                <span class="user-name">Stas Logvin</span>
+                                <span class="time">3hrs</span>
+                            </div>
+                            <div class="contentText" >
+                                Последнее сообщение
+                            </div>
+                        </div>
+                    </div>
+                    <img src="/img/menu/messages.png" class="titleBtn"/>
+                </div>
+                <div class="allMessages">
+                    <div class="message">
+                        <div class="btns">
+                            <a href=""><img src="/img/common/Delete.png" alt=""></a>
+                            <a href=""><img src="/img/common/Send.png" alt=""></a>
+                        </div>
+                        <div class="messageText">Привет</div>
+                    </div>
+                    <div class="message left">
+                        <div class="btns">
+                            <a href=""><img src="/img/common/Delete.png" alt=""></a>
+                            <a href=""><img src="/img/common/Send.png" alt=""></a>
+                        </div>
+                        <div class="messageText">дарова</div>
+                    </div>
+                </div>
+                <div class="postMessage">
+                    <form method="post">
+                        <img src="/img/editor/media.png" alt="">
+                        <input type="text" class="messageText" placeholder="Start a new message"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

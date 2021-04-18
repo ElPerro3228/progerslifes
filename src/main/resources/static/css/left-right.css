@@ -60,7 +60,7 @@ img {
     border-radius: 25%;
     padding: 5px;
     transition: all .3s linear;
-    background-image: url(/img/menu/logout.png);
+    background-image: url(../img/menu/logout.png);
     background-size: 90%;
     background-position: center;
     background-repeat: no-repeat;
@@ -113,7 +113,7 @@ img {
     background: #F2901D;
     color: white;
     font-weight: bold;
-    font-style: 17px;
+    font-size: 17px;
     text-align: center;
     padding: 15px 0;
     border-radius: 25px;
@@ -167,7 +167,7 @@ img {
     }
     .postImg{
         height: 100px;
-        margin: 0px;
+        margin: 0;
     }
 }
 @media (max-width:825px){
@@ -179,8 +179,8 @@ img {
     }
 }
 @media (max-width:550px){
-    .leftMenu{
-        left: 1%;
+    .leftMenu .menuItem img{
+        margin-right: 0;
     }
     .menuItem p{
         display: none;
@@ -193,7 +193,7 @@ img {
         padding: 10px 0 5px;
     }
     .tweetBtn::after{
-        content: url(/img/menu/newpost.png);
+        content: url(../img/menu/newpost.png);
     }
     .main{
         margin-left: 50px;
@@ -211,4 +211,32 @@ img {
     .text{
         display: none;
     }
+    [data-tooltip]::after{
+        left: -15%;
+    }
+}
+
+/*data-tooltip*/
+[data-tooltip] {
+    position: relative; /* Относительное позиционирование */
+}
+[data-tooltip]::after {
+    content: attr(data-tooltip); /* Выводим текст */
+    position: absolute; /* Абсолютное позиционирование */
+    left: 30%;
+    border-radius: 5px;
+    font-size: 15px;
+    bottom: 0; /* Положение подсказки */
+    background: #ffe5c2; /* Синий цвет фона */
+    color: #000000; /* Цвет текста */
+    padding: 5px; /* Поля вокруг текста */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+    pointer-events: none; /* Подсказка */
+    opacity: 0; /* Подсказка невидима */
+    transition: 1s; /* Время появления подсказки */
+    z-index: 9999;
+}
+[data-tooltip]:hover::after {
+    opacity: 1; /* Показываем подсказку */
+    bottom: -22px; /* Положение подсказки */
 }
