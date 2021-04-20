@@ -24,7 +24,16 @@
         <div class="profile">
             <div class="background">
                 <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
-                <a  th:href="@{/profile/edit}" class="editBtn">FOLLOW</a>
+                <div th:if="${isFollowing}">
+                    <button class="editBtn">FOLLOWING</button>
+                </div>
+                <div th:unless="${isFollowing}">
+                    <form th:action="@{/follow}" method="post">
+                        <input name="username" type="hidden" th:value="${user.username}" />
+                        <button class="editBtn" type="submit">FOLLOW</button>
+                    </form>
+                </div>
+
             </div>
             <p>
                 <span class="username" th:text="${user.username}"></span>

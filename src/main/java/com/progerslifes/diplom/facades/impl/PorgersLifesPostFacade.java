@@ -1,7 +1,6 @@
 package com.progerslifes.diplom.facades.impl;
 
 import com.progerslifes.diplom.entity.Post;
-import com.progerslifes.diplom.facades.AuthenticationFacade;
 import com.progerslifes.diplom.facades.PostFacade;
 import com.progerslifes.diplom.facades.ProfilePageFacade;
 import com.progerslifes.diplom.facades.converters.PostConverter;

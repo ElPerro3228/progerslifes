@@ -50,7 +50,7 @@
                 <div class="tweetTitle">Posts</div>
                 <th:block th:each="post : ${user.posts}">
                     <div class="post">
-                        <a href="/profile.html" class="post-header">
+                        <a th:href="@{/profile/}" class="post-header">
                             <img th:src="${user.userProfile.profilePicture}" alt="" class="user-avatar">
                             <div class="content">
                                 <div class="nameTime">

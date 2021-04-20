@@ -7,6 +7,7 @@ import com.progerslifes.diplom.facades.converters.user.UserProfileDTOConverter;
 import com.progerslifes.diplom.facades.dto.UserDTO;
 import com.progerslifes.diplom.facades.dto.UserProfileDTO;
 import com.progerslifes.diplom.facades.user.UserFacade;
+import com.progerslifes.diplom.services.AuthenticationService;
 import com.progerslifes.diplom.services.UploadService;
 import com.progerslifes.diplom.services.UserService;
 import com.progerslifes.diplom.services.builders.UserProfileBuilder;
@@ -39,6 +40,9 @@ public class ProgerLifesUserFacade implements UserFacade {
 
     @Autowired
     private UserProfileBuilder userProfileBuilder;
+
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @Value("${user.profile.picture.dir}")
     private String imagesDir;
@@ -73,5 +77,17 @@ public class ProgerLifesUserFacade implements UserFacade {
         userProfileBuilder.setName(user.getUsername());
         userProfileBuilder.setUser(user);
         return userProfileBuilder.getResult();
+    }
+
+    @Override
+    public User follow(String username) {
+        return userService.follow(username);
+    }
+
+    @Override
+    public boolean isFollowing(String username) {
+        User followingUser = userService.getUser(username);
+        User currentUser = userService.getUser(authenticationService.getAuthentication().getName());
+        return currentUser.getSubscriptions().contains(followingUser);
     }
 }

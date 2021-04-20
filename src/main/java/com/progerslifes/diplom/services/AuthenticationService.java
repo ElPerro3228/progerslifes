@@ -1,7 +1,7 @@
-package com.progerslifes.diplom.facades;
+package com.progerslifes.diplom.services;
 
 import org.springframework.security.core.Authentication;
 
-public interface AuthenticationFacade {
+public interface AuthenticationService {
     Authentication getAuthentication();
 }

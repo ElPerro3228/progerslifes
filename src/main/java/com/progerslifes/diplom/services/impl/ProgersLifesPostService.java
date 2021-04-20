@@ -21,8 +21,8 @@ public class ProgersLifesPostService implements PostService {
     }
 
     @Override
-    public List<Post> getPosts() {
-        return postRepository.findAllByOrderByCreationDateAsc();
+    public List<Post> getPosts(List<User> users) {
+        return postRepository.findPostByUserIn(users);
     }
 
     @Override
