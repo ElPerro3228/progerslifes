@@ -25,7 +25,10 @@
             <div class="background">
                 <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
                 <div th:if="${isFollowing}">
-                    <button class="editBtn">FOLLOWING</button>
+                    <form th:action="@{/follow}" th:method="delete">
+                        <input name="username" type="hidden" th:value="${user.username}" />
+                        <button class="editBtn" type="submit">DON'T FOLLOW</button>
+                    </form>
                 </div>
                 <div th:unless="${isFollowing}">
                     <form th:action="@{/follow}" method="post">

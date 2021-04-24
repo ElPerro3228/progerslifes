@@ -1,6 +1,7 @@
 package com.progerslifes.diplom.facades.dto;
 
 import com.progerslifes.diplom.validation.user.PasswordMatches;
+import org.springframework.lang.Nullable;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,9 @@ public class UserDTO {
     @NotEmpty
     private String password;
     private String matchingPassword;
+
+    @Nullable
+    private UserProfileDTO userProfile;
 
     public UserDTO() {
     }
@@ -41,5 +45,14 @@ public class UserDTO {
 
     public void setMatchingPassword(String matchingPassword) {
         this.matchingPassword = matchingPassword;
+    }
+
+    @Nullable
+    public UserProfileDTO getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(@Nullable UserProfileDTO userProfile) {
+        this.userProfile = userProfile;
     }
 }

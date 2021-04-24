@@ -53,7 +53,17 @@ public class ProgersLifesUserService implements UserService {
             throw new CurrentUserAlreadyFollowsUser("Current user already follow user with username: " + username);
         }
         currentUser.addSubscription(followingUser);
-        userRepository.save(currentUser);
+        return userRepository.save(currentUser);
+    }
+
+    @Override
+    public User dontFollow(String username) {
+        User followingUser = userRepository.getUserByUsername(username);
+        User currentUser = userRepository.getUserByUsername(authenticationService.getAuthentication().getName());
+        if (currentUser.getSubscriptions().contains(followingUser)) {
+            currentUser.deleteSubscription(followingUser);
+            currentUser = userRepository.save(currentUser);
+        }
         return currentUser;
     }
 }

@@ -44,14 +44,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name="relationship",
             joinColumns=@JoinColumn(name="user_one_id"),
             inverseJoinColumns=@JoinColumn(name="user_two_id")
     )
     private List<User> subscriptions;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name="relationship",
             joinColumns=@JoinColumn(name="user_two_id"),
             inverseJoinColumns=@JoinColumn(name="user_one_id")
@@ -140,11 +140,23 @@ public class User {
         subscribers.add(user);
     }
 
+    public void deleteSubscriber(User user) {
+        if (subscribers != null) {
+            subscribers.remove(user);
+        }
+    }
+
     public void addSubscription(User user) {
         if (subscriptions == null) {
             subscriptions = new ArrayList<>();
         }
         subscriptions.add(user);
+    }
+
+    public void deleteSubscription(User user) {
+        if (subscriptions != null) {
+            subscriptions.remove(user);
+        }
     }
 
     @Override

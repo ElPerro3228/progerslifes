@@ -8,4 +8,6 @@ public interface UserService {
     User getUser(String username);
     UserProfile saveUserProfile(UserProfile userProfile);
     User follow(String username);
+
+    User dontFollow(String username);
 }

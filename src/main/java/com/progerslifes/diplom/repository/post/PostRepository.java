@@ -10,10 +10,10 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Integer> {
 
-    @Query("SELECT p FROM Post p WHERE p.user = :user")
+    @Query("SELECT p FROM Post p WHERE p.user = :user ORDER BY p.creationDate DESC")
     List<Post> findPostByUser(@Param("user") User user);
 
-    @Query("SELECT p FROM Post p WHERE p.user IN (:users) ORDER BY p.creationDate ASC")
+    @Query("SELECT p FROM Post p WHERE p.user IN (:users) ORDER BY p.creationDate DESC")
     List<Post> findPostByUserIn(@Param("users") List<User> users);
 
     List<Post> findAllByOrderByCreationDateAsc();
