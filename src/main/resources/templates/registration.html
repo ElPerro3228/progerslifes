@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/static/library/css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" th:href="@{/css/register.css}">
-    <title>ProgersLife | Sing In</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/register.css}">
+    <title>ProgersLife | Sign Up</title>
 </head>
 <body>
     <div class="limiter">
@@ -35,8 +34,8 @@
                                 </div>
                             </div>
                                 <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Name Error</p>
-                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</p>
-                                <p th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}">Name Error</p>
+                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+                                <p th:if="${#fields.hasErrors('matchingPassword')}" th:errors="*{matchingPassword}">Password dont match</p>
                             <button class="loginBtn" type="submit">Sign Up</button>
                             <a href="/html/loginPage.html" class="registerBtn">Sign In</a>
                         </form>
@@ -45,7 +44,9 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/static/library/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" th:src="@{/scripts/index.js}"></script>
 </body>
 </html>
 

@@ -1,3 +1,35 @@
+input:not([type]):focus:not([readonly])+label,
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=email]:not(.browser-default):focus:not([readonly])+label,
+input[type=url]:not(.browser-default):focus:not([readonly])+label,
+input[type=time]:not(.browser-default):focus:not([readonly])+label,
+input[type=date]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime]:not(.browser-default):focus:not([readonly])+label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly])+label,
+input[type=tel]:not(.browser-default):focus:not([readonly])+label,
+input[type=number]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label {
+    color: rgb(61, 103, 194);
+}
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid rgb(61, 103, 194);
+    -webkit-box-shadow: 0 1px 0 0 rgb(61, 103, 194);
+    box-shadow: 0 1px 0 0 rgb(61, 103, 194);
+}
 .newPost{
     background: #ffffff;
     margin-bottom: 16px;
@@ -24,17 +56,12 @@
     margin: 0 10px;
 }
 .create-post-input{
-    box-shadow: 1px 1px 5px #6e7f8d70;
-    border-radius: 25px;
-    margin-left: 15px;
-    font-size: 19px;
-    width: 100%;
-    padding: 10px 15px;
-    resize: none;
-    border: none;
-    outline: none;
-    word-wrap: break-word;
-    overflow-x: hidden;
+    box-shadow: 1px 1px 5px #6e7f8d70 !important;
+    border-radius: 25px !important;
+    margin-left: 15px !important;
+    font-size: 19px !important;
+    width: 100% !important;
+    padding: 10px 15px !important;
 }
 .create-post-footer{
     padding-left: 60px;

@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" th:href="@{/library/css/materialize.min.css}"  media="screen,projection"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!--    <link th:href="@{/library/css/materialize.css}" rel="stylesheet"/>-->
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
 </head>
 <body>
@@ -20,7 +21,7 @@
                         <img src="/img/menu/home.png" alt="">
                         <p>Home</p> 
                     </a>
-                    <a href="#" class="menuItem" data-tooltip="Explore">
+                    <a href="#" class="menuItem tooltipped" data-position="bottom" data-tooltip="Explore">
                         <img src="/img/menu/explore.png" alt="">
                         <p>Explore</p>
                     </a>
@@ -52,6 +53,8 @@
             </div> 
         </div>
     </div>
-    <script type="text/javascript" src="/static/library/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--    <script type="text/javascript" th:src="@{/library/js/materialize.min.js}"></script>-->
+    <script type="text/javascript" th:src="@{/scripts/index.js}"></script>
 </body>
 </html>

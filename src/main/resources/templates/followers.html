@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" th:href="@{/css/follow.css}">
+    <link rel="stylesheet" href="/css/follow.css">
+    <link rel="stylesheet" th:href="@{/css/left-right.css}">
+    <title>ProgersLife | Followers</title>
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/leftmenu :: leftmenu"></div>
+    <div class="main">
+        <div class="title">
+            <a href="" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
+            <div class="name-tweets">
+                <div class="username" th:text="${user.username}"></div>
+                <div class="tweetCol">Followers</div>
+            </div>
+        </div>
+        <div class="followers">
+            <th:block th:each="follower : ${profile.followers}">
+                <a href="#" class="follower">
+                    <img th:src="${user.userProfile.profilePicture}" alt="fff" class="user-avatar">
+                    <div class="content">
+                        <div class="nameUsername">
+                            <span class="fio" th:text="${user.userProfile.name}+' '+ ${user.userProfile.surname}"></span>
+                            <span class="username" th:text="@${user.username}"></span>
+                        </div>
+                        <div class="desc">
+                            <span class="description" th:text="${user.userProfile.description}"></span>
+                        </div>
+                    </div>
+                </a>
+            </th:block>
+        </div>
+    </div>
+    <div th:replace="fragments/rightmenu :: rightmenu"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!--    <script type="text/javascript" th:src="@{/library/js/materialize.min.js}"></script>-->
+</body>
+</html>

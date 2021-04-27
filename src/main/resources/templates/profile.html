@@ -6,8 +6,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
+<!--    <link rel="stylesheet" th:href="@{/library/css/materialize.min.css}"/>-->
     <title>ProgersLife | Profile</title>
 </head>
 <body>
@@ -37,10 +39,10 @@
                 </div>
                 <div class="friends">
                     <div class="following">
-                        <span class="followNumb">20</span> Following 
+                        <a th:href="@{/profile/{username}/following}" class="followNumb">20</a> Following
                     </div>
                     <div class="followers">
-                        <span class="followNumb">29</span> Followers
+                        <a th:href="@{/profile/{username}/followers}" class="followNumb">29</a> Followers
                     </div>
                 </div>
             </div>
@@ -85,5 +87,7 @@
         </div>
         <div th:replace="fragments/rightmenu :: rightmenu"></div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!--    <script type="text/javascript" th:src="@{/library/js/materialize.min.js}"></script>-->
 </body>
 </html>

@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" th:href="@{/css/login.css}">
-    <title>ProgersLife | Sign in</title>
+    <link type="text/css" rel="stylesheet" th:href="@{/css/login.css}">
+    <title>ProgersLife | Sign In</title>
 </head>
 <body>
     <div class="limiter">
@@ -18,17 +19,19 @@
                         <div class="title">ACCOUNT LOGIN</div>
                         <form class="form" th:action="@{/login}" method="POST">
                             <div class="inputs">
-                                <div class="input-block">
-                                    <label>login</label>
-                                    <input name="username" class="input" type="text" required>
+                                <div class="input-field">
+                                    <input id="login" name="username" type="text" required>
+                                    <label for="login">login</label>
                                 </div>
-                                <div class="input-block">
-                                    <label>Password</label>
-                                    <input name="password" class="input" type="password" required>                                </div>
+                                <div class="input-field">
+                                    <input id="password" name="password" type="password" required>
+                                    <label for="password">Password</label>
+                                </div>
                             </div>
                             <button class="loginBtn" type="submit">Sign in</button>
                             <label>
-                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                                <input type="checkbox"/>
+                                <span>Remember me</span>
                             </label>
                             <div class="fogot">
                                 <span class="text">Forgot </span>
@@ -44,7 +47,8 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="/static/library/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<!--    <script type="text/javascript" th:src="@{/library/js/materialize.min.js}"></script>-->
 </body>
 </html>
 
