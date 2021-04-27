@@ -19,4 +19,6 @@ public interface UserFacade {
     List<UserDTO> getFollowingUsers(String username);
 
     List<UserDTO> getFollowers(String username);
+
+    User getCurrentUser();
 }

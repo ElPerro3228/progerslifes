@@ -112,4 +112,9 @@ public class ProgerLifesUserFacade implements UserFacade {
         User user = userService.getUser(username);
         return userConverter.convert(user.getSubscribers());
     }
+
+    @Override
+    public User getCurrentUser() {
+        return userService.getUser(authenticationService.getAuthentication().getName());
+    }
 }

@@ -24,16 +24,16 @@
             </div>
         </div>
         <div class="followers">
-            <th:block th:each="follower : ${profile.followings}">
+            <th:block th:each="follower : ${users}">
                 <a href="#" class="follower">
-                    <img th:src="${user.userProfile.profilePicture}" alt="fff" class="user-avatar">
+                    <img th:src="${follower.userProfile.profilePicture}" alt="fff" class="user-avatar">
                     <div class="content">
                         <div class="nameUsername">
-                            <span class="fio" th:text="${user.userProfile.name}+' '+ ${user.userProfile.surname}"></span>
-                            <span class="username" th:text="@${user.username}"></span>
+                            <span class="fio" th:text="${follower.userProfile.name}+' '+ ${follower.userProfile.surname}"></span>
+                            <span class="username" th:text="${follower.username}"></span>
                         </div>
                         <div class="desc">
-                            <span class="description" th:text="${user.userProfile.description}"></span>
+                            <span class="description" th:text="${follower.userProfile.description}"></span>
                         </div>
                     </div>
                 </a>

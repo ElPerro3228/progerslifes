@@ -54,13 +54,15 @@ public class ProfilePageController {
 
     @GetMapping("/profile/{username}/following")
     public String following(@PathVariable("username") String username, Model model) {
+        model.addAttribute("user", userFacade.getCurrentUser());
         model.addAttribute("users", userFacade.getFollowingUsers(username));
         return "following";
     }
 
     @GetMapping("/profile/{username}/followers")
     public String followers(@PathVariable("username") String username, Model model) {
+        model.addAttribute("user", userFacade.getCurrentUser());
         model.addAttribute("users", userFacade.getFollowers(username));
-        return "following";
+        return "followers";
     }
 }

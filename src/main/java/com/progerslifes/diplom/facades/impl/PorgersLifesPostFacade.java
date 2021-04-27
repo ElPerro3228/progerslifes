@@ -6,8 +6,14 @@ import com.progerslifes.diplom.facades.ProfilePageFacade;
 import com.progerslifes.diplom.facades.converters.PostConverter;
 import com.progerslifes.diplom.facades.dto.PostDTO;
 import com.progerslifes.diplom.services.PostService;
+import com.progerslifes.diplom.services.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @Component
 public class PorgersLifesPostFacade implements PostFacade {
@@ -18,11 +24,31 @@ public class PorgersLifesPostFacade implements PostFacade {
     private ProfilePageFacade profilePageFacade;
     @Autowired
     private PostService postService;
+    @Autowired
+    private UploadService uploadService;
+    @Value("${user.profile.picture.dir}")
+    private String imagesDir;
 
     @Override
     public void savePost(PostDTO postDTO) {
         Post post = postConverter.convert(postDTO);
         post.setUser(profilePageFacade.getUser());
         postService.save(post);
+    }
+
+    @Override
+    public void savePost(PostDTO postDTO, MultipartFile image) throws IOException {
+        Post post = postConverter.convert(postDTO);
+        if ((!image.isEmpty()) && (image.getSize() != 0)) {
+            savePostPicture(image, post);
+        }
+        post.setUser(profilePageFacade.getUser());
+        postService.save(post);
+    }
+
+    private void savePostPicture(MultipartFile image, Post post) throws IOException {
+        String imageName = StringUtils.cleanPath(image.getOriginalFilename());
+        uploadService.saveFile(imagesDir, imageName, image);
+        post.setPicturePath(uploadService.getPath(imagesDir, imageName));
     }
 }

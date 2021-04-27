@@ -37,10 +37,10 @@
                 </div>
                 <div class="friends">
                     <div class="following">
-                        <a th:href="@{/profile/{username}/following}" class="followNumb" th:text="${user.subscriptions.size()} Following"></a>
+                        <a th:href="@{/profile/{username}/following(username=${user.username})}" class="followNumb" th:text="${user.subscriptions.size() + ' Following'}"></a>
                     </div>
                     <div class="followers">
-                        <a th:href="@{/profile/{username}/followers}" class="followNumb" th:text="${user.subscribers.size()} Followers"></a>
+                        <a th:href="@{/profile/{username}/followers(username=${user.username})}" class="followNumb" th:text="${user.subscribers.size() + ' Followers'}"></a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                             </div>                        
                         </a>
                         <div class="post-content">
-                            <img src="/img/avatars/photo.png" alt="" class="post-img">
+                            <img th:src="${post.picturePath}" alt="" class="post-img">
                         </div>
                         <div class="post-footer">
                             <div class="footerItem">
