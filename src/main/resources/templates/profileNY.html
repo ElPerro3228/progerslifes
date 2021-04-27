@@ -24,7 +24,19 @@
         <div class="profile">
             <div class="background">
                 <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
-                <a  th:href="@{/profile/edit}" class="editBtn">FOLLOW</a>
+                <div th:if="${isFollowing}">
+                    <form th:action="@{/follow}" th:method="delete">
+                        <input name="username" type="hidden" th:value="${user.username}" />
+                        <button class="editBtn" type="submit">UNFOLLOW</button>
+                    </form>
+                </div>
+                <div th:unless="${isFollowing}">
+                    <form th:action="@{/follow}" method="post">
+                        <input name="username" type="hidden" th:value="${user.username}" />
+                        <button class="editBtn" type="submit">FOLLOW</button>
+                    </form>
+                </div>
+
             </div>
             <p>
                 <span class="username" th:text="${user.username}"></span>
@@ -37,10 +49,10 @@
             </div>
             <div class="friends">
                 <div class="following">
-                    <a th:href="@{/profile/{username}/following}" class="followNumb">20</a> Following
+                    <a th:href="@{/profile/{username}/following(username=${user.username})}" class="followNumb" th:text="${user.subscriptions.size() + ' Following'}"></a>
                 </div>
                 <div class="followers">
-                    <a th:href="@{/profile/{username}/followers}" class="followNumb">29</a> Followers
+                    <a th:href="@{/profile/{username}/followers(username=${user.username})}" class="followNumb" th:text="${user.subscribers.size() + ' Followers'}"></a>
                 </div>
             </div>
         </div>
@@ -60,7 +72,7 @@
                         </div>
                     </a>
                     <div class="post-content">
-                        <img src="/img/avatars/photo.png" alt="" class="post-img">
+                        <img th:src="${post.picturePath}" alt="" class="post-img">
                     </div>
                     <div class="post-footer">
                         <div class="footerItem">

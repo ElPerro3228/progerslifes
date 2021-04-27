@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface PostService {
     List<Post> getPosts(User user);
-    List<Post> getPosts();
+    List<Post> getPosts(List<User> users);
     void save(Post post);
 }

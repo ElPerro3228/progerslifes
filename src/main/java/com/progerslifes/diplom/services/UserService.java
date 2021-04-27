@@ -7,4 +7,7 @@ public interface UserService {
     User saveUser(User user);
     User getUser(String username);
     UserProfile saveUserProfile(UserProfile userProfile);
+    User follow(String username);
+
+    User dontFollow(String username);
 }

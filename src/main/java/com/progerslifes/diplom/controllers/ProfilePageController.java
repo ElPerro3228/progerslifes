@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -49,5 +50,19 @@ public class ProfilePageController {
         }
         model.addAttribute("userProfile", userProfileDTO);
         return "editProfile";
+    }
+
+    @GetMapping("/profile/{username}/following")
+    public String following(@PathVariable("username") String username, Model model) {
+        model.addAttribute("user", userFacade.getCurrentUser());
+        model.addAttribute("users", userFacade.getFollowingUsers(username));
+        return "following";
+    }
+
+    @GetMapping("/profile/{username}/followers")
+    public String followers(@PathVariable("username") String username, Model model) {
+        model.addAttribute("user", userFacade.getCurrentUser());
+        model.addAttribute("users", userFacade.getFollowers(username));
+        return "followers";
     }
 }

@@ -44,14 +44,14 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name="relationship",
             joinColumns=@JoinColumn(name="user_one_id"),
             inverseJoinColumns=@JoinColumn(name="user_two_id")
     )
     private List<User> subscriptions;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name="relationship",
             joinColumns=@JoinColumn(name="user_two_id"),
             inverseJoinColumns=@JoinColumn(name="user_one_id")
@@ -140,10 +140,40 @@ public class User {
         subscribers.add(user);
     }
 
+    public void deleteSubscriber(User user) {
+        if (subscribers != null) {
+            subscribers.remove(user);
+        }
+    }
+
     public void addSubscription(User user) {
         if (subscriptions == null) {
             subscriptions = new ArrayList<>();
         }
         subscriptions.add(user);
+    }
+
+    public void deleteSubscription(User user) {
+        if (subscriptions != null) {
+            subscriptions.remove(user);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (getId() != user.getId()) return false;
+        return getUsername().equals(user.getUsername());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + getUsername().hashCode();
+        return result;
     }
 }

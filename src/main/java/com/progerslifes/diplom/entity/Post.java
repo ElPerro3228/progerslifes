@@ -28,6 +28,9 @@ public class Post {
     @Column(name = "text")
     private String text;
 
+    @Column(name = "picturepath")
+    private String picturePath;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
@@ -65,5 +68,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getPicturePath() {
+        return picturePath;
+    }
+
+    public void setPicturePath(String picturePath) {
+        this.picturePath = picturePath;
     }
 }

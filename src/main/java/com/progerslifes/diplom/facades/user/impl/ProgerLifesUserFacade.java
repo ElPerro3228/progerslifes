@@ -2,11 +2,13 @@ package com.progerslifes.diplom.facades.user.impl;
 
 import com.progerslifes.diplom.entity.User;
 import com.progerslifes.diplom.entity.UserProfile;
+import com.progerslifes.diplom.facades.converters.user.UserConverter;
 import com.progerslifes.diplom.facades.converters.user.UserDTOConverter;
 import com.progerslifes.diplom.facades.converters.user.UserProfileDTOConverter;
 import com.progerslifes.diplom.facades.dto.UserDTO;
 import com.progerslifes.diplom.facades.dto.UserProfileDTO;
 import com.progerslifes.diplom.facades.user.UserFacade;
+import com.progerslifes.diplom.services.AuthenticationService;
 import com.progerslifes.diplom.services.UploadService;
 import com.progerslifes.diplom.services.UserService;
 import com.progerslifes.diplom.services.builders.UserProfileBuilder;
@@ -18,6 +20,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 @Component
 public class ProgerLifesUserFacade implements UserFacade {
@@ -27,6 +30,9 @@ public class ProgerLifesUserFacade implements UserFacade {
 
     @Autowired
     private UserProfileDTOConverter userProfileDTOConverter;
+
+    @Autowired
+    private UserConverter userConverter;
 
     @Autowired
     private UserService userService;
@@ -39,6 +45,9 @@ public class ProgerLifesUserFacade implements UserFacade {
 
     @Autowired
     private UserProfileBuilder userProfileBuilder;
+
+    @Autowired
+    private AuthenticationService authenticationService;
 
     @Value("${user.profile.picture.dir}")
     private String imagesDir;
@@ -73,5 +82,39 @@ public class ProgerLifesUserFacade implements UserFacade {
         userProfileBuilder.setName(user.getUsername());
         userProfileBuilder.setUser(user);
         return userProfileBuilder.getResult();
+    }
+
+    @Override
+    public User follow(String username) {
+        return userService.follow(username);
+    }
+
+    @Override
+    public boolean isFollowing(String username) {
+        User followingUser = userService.getUser(username);
+        User currentUser = userService.getUser(authenticationService.getAuthentication().getName());
+        return currentUser.getSubscriptions().contains(followingUser);
+    }
+
+    @Override
+    public User dontFollow(String username) {
+        return userService.dontFollow(username);
+    }
+
+    @Override
+    public List<UserDTO> getFollowingUsers(String username) {
+        User user = userService.getUser(username);
+        return userConverter.convert(user.getSubscriptions());
+    }
+
+    @Override
+    public List<UserDTO> getFollowers(String username) {
+        User user = userService.getUser(username);
+        return userConverter.convert(user.getSubscribers());
+    }
+
+    @Override
+    public User getCurrentUser() {
+        return userService.getUser(authenticationService.getAuthentication().getName());
     }
 }
