@@ -25,7 +25,7 @@
         </div>
         <div class="followers">
             <th:block th:each="follower : ${users}">
-                <a href="#" class="follower">
+                <a th:href="@{/profile/} + ${follower.username}" class="follower">
                     <img th:src="${follower.userProfile.profilePicture}" alt="fff" class="user-avatar">
                     <div class="content">
                         <div class="nameUsername">
