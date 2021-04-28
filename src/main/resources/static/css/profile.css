@@ -20,7 +20,7 @@ img {
 .wrapper{
     margin: 0 auto;
     max-width: 1600px;
-    width: 90%;
+    /*width: 90%;*/
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -29,7 +29,7 @@ img {
 /* ---------------- */
 .main{
     margin-top: 5px;
-    width: 40%;
+    width: 50%;
     margin-left: 210px;
     border-left: 1px solid #E6ECF0;
     border-right: 1px solid #E6ECF0;

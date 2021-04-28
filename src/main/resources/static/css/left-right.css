@@ -20,7 +20,7 @@ img {
 .wrapper{
     margin: 0 auto;
     max-width: 1600px;
-    width: 90%;
+    /*width: 90%;*/
     display: flex;
     justify-content: center;
     flex-direction: row;
@@ -202,7 +202,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
     }
     .main{
         margin-left: 50px;
-        width: 50%;
+        width: 60%;
     }
     .logoutAvatar{
         display: none;

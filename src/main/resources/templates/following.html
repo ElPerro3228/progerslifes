@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" th:href="@{/css/follow.css}">
-    <link rel="stylesheet" href="/css/follow.css">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
     <title>ProgersLife | Followers</title>
 </head>
@@ -20,7 +20,7 @@
             <a href="" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
             <div class="name-tweets">
                 <div class="username" th:text="${user.username}"></div>
-                <div class="tweetCol">Following</div>
+                <div class="tweetCol">2 Tweets</div>
             </div>
         </div>
         <div class="followers">
@@ -30,7 +30,7 @@
                     <div class="content">
                         <div class="nameUsername">
                             <span class="fio" th:text="${follower.userProfile.name}+' '+ ${follower.userProfile.surname}"></span>
-                            <span class="username" th:text="${follower.username}"></span>
+                            <span class="user-name" th:text="${follower.username}"></span>
                         </div>
                         <div class="desc">
                             <span class="description" th:text="${follower.userProfile.description}"></span>

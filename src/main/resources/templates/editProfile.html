@@ -16,7 +16,7 @@
 <body>
     <div class="wrapper">
         <div th:replace="fragments/leftmenu :: leftmenu"></div>
-        <div class="edit">
+        <div class="main">
             <form th:action="@{/profile/edit}" th:object="${userProfile}" method="post" enctype="multipart/form-data" class="form">
                 <div class="title">
                     <a th:href="@{/home}" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>

@@ -1,4 +1,20 @@
+.user-avatar{
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    border-radius: 50%;
+}
+.content{
+    margin-left: 5px;
+}
 .follower{
     display: flex;
     width: 100%;
+    padding: 10px 5px;
+    border-top: 1px solid #E6ECF0;
+    border-bottom: 1px solid #E6ECF0;
+    transition: all .3s linear;
+}
+.follower:hover{
+    background: #ebf0f3;
 }

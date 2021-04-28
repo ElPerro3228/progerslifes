@@ -69,14 +69,24 @@ textarea.materialize-textarea:focus:not([readonly]) {
     align-items: center;
     justify-content: space-between;
 }
-.create-post-footer img{
+.loadImg{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    position: absolute;
+    z-index: -10;
+}
+.loadImgLabel{
+    display: inline-block;
     width: 25px;
     height: 25px;
+    background-image: url("/img/editor/media.png");
+    background-size: cover;
 }
-.create-post-footer img:hover{
+.loadImgLabel:hover{
     transform: scale(1.1);
-    background: #f28f1d46;
-    box-shadow: 1px 1px 15px 10px #f28f1d3b;
+    background: #f28f1d46 url("/img/editor/media.png");
+    box-shadow: 1px 1px 10px 5px #f28f1d3b;
     border-radius: 25px;
 }
 .newPostBtn{
