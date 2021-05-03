@@ -37,7 +37,6 @@
                                 <span class="text">Forgot </span>
                                 <a href="#" class="textBlue"> User name / password?</a>
                             </div>
-                            <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
                         </form>
                         <form th:action="@{/registration}" method="get">
                             <input type="submit" value="Sing Up" class="registerBtn">
