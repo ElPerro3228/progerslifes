@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
-    <title>ProgersLife | Profile</title>
+    <title>ProgersLife | Explore</title>
 </head>
 <body>
 <div class="wrapper">
@@ -17,50 +17,18 @@
         <div class="title">
             <a href="" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
             <div class="name-tweets">
-                <div class="username" th:text="${user.username}"></div>
-                <div class="tweetCol">2 Tweets</div>
+                <div class="username">Explore</div>
+                <div class="tweetCol"></div>
             </div>
         </div>
-        <div class="profile">
-            <div class="background">
-                <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
-                <div th:if="${isFollowing}">
-                    <form th:action="@{/follow}" th:method="delete">
-                        <input name="username" type="hidden" th:value="${user.username}" />
-                        <button class="editBtn" type="submit">UNFOLLOW</button>
-                    </form>
-                </div>
-                <div th:unless="${isFollowing}">
-                    <form th:action="@{/follow}" method="post">
-                        <input name="username" type="hidden" th:value="${user.username}" />
-                        <button class="editBtn" type="submit">FOLLOW</button>
-                    </form>
-                </div>
-
-            </div>
-            <p>
-                <span class="username" th:text="${user.username}"></span>
-                <span class="fio" th:text="${user.userProfile.name}+' '+ ${user.userProfile.surname}"></span>
-            </p>
-            <div class="description" th:text="${user.userProfile.description}"></div>
-            <div class="birthday">
-                <img src="/img/menu/calendar.png" alt="">
-                <p th:text="${#calendars.format(user.userProfile.birthDate,'dd MMMM yyyy')}"></p>
-            </div>
-            <div class="friends">
-                <div class="following">
-                    <a th:href="@{/profile/{username}/following(username=${user.username})}" class="followNumb" th:text="${user.subscriptions.size() + ' Following'}"></a>
-                </div>
-                <div class="followers">
-                    <a th:href="@{/profile/{username}/followers(username=${user.username})}" class="followNumb" th:text="${user.subscribers.size() + ' Followers'}"></a>
-                </div>
-            </div>
-        </div>
+        <input type="search" class="search" id="search" placeholder="Search" autocomplete="off">
+        <ul id="searchResults" class="searchResults">
+        </ul>
         <div class="posts">
             <div class="tweetTitle">Posts</div>
             <th:block th:each="post : ${user.posts}">
                 <div class="post">
-                    <a href="/profile.html" class="post-header">
+                    <a th:href="@{/profile/}" class="post-header">
                         <img th:src="${user.userProfile.profilePicture}" alt="" class="user-avatar">
                         <div class="content">
                             <div class="nameTime">
@@ -96,9 +64,9 @@
         </div>
     </div>
     <div th:replace="fragments/rightmenu :: rightmenu"></div>
-    <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script type="text/javascript" th:src="@{/scripts/script.js}"></script>
 </div>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" th:src="@{/scripts/script.js}"></script>
 </body>
 </html>

@@ -11,7 +11,9 @@
 <body>
     <div th:fragment="rightmenu">
         <div class="rightMenu">
-            <input type="text" class="search" id="search" placeholder="Search"></input>
+            <input type="search" class="search" id="search" placeholder="Search" autocomplete="off">
+            <ul id="searchResults" class="searchResults">
+            </ul>
             <div class="newFriends">
                 <div class="friendsTitle">You mught like</div>
                 <div class="friendItem">
