@@ -6,7 +6,7 @@ import org.springframework.data.solr.core.mapping.SolrDocument;
 
 import javax.persistence.Id;
 
-@SolrDocument(collection = "porgerslifes")
+@SolrDocument(collection = "progerslifes")
 public class User {
 
     @Id
