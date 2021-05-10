@@ -1,5 +1,7 @@
 package com.progerslifes.diplom.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,6 +26,10 @@ public class UserProfile {
     @Column(name = "birthdate")
     private Date birthDate;
 
+    @Column(name = "last_modified")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date lastModified;
+
     @Column(name = "name")
     private String name;
 
@@ -32,6 +38,9 @@ public class UserProfile {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "github")
+    private String github;
 
     @OneToOne(mappedBy = "userProfile")
     private User user;
@@ -93,5 +102,21 @@ public class UserProfile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Date getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
+    }
+
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
     }
 }

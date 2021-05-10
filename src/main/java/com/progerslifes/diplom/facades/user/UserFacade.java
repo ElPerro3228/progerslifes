@@ -20,5 +20,7 @@ public interface UserFacade {
 
     List<UserDTO> getFollowers(String username);
 
+    User saveGitHubLogin(String username, String githubLogin);
+
     User getCurrentUser();
 }

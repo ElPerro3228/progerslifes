@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class ProgersLifesUserService implements UserService {
 
@@ -28,6 +30,7 @@ public class ProgersLifesUserService implements UserService {
         if (dbUser != null) {
             throw new UserRegistrationException("user with name " + user.getUsername() + " already exists");
         }
+        user.setLastModified(new Date());
         return userRepository.save(user);
     }
 
@@ -42,6 +45,7 @@ public class ProgersLifesUserService implements UserService {
 
     @Override
     public UserProfile saveUserProfile(UserProfile userProfile) {
+        userProfile.setLastModified(new Date());
         return userProfileRepository.save(userProfile);
     }
 

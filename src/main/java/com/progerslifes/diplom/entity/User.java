@@ -1,5 +1,7 @@
 package com.progerslifes.diplom.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -40,6 +43,10 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "Profile_id")
     private UserProfile userProfile;
+
+    @Column(name = "last_modified")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date lastModified;
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts;
@@ -175,5 +182,13 @@ public class User {
         int result = getId();
         result = 31 * result + getUsername().hashCode();
         return result;
+    }
+
+    public Date getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
     }
 }

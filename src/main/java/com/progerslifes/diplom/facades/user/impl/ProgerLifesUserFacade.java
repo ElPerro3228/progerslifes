@@ -117,4 +117,13 @@ public class ProgerLifesUserFacade implements UserFacade {
     public User getCurrentUser() {
         return userService.getUser(authenticationService.getAuthentication().getName());
     }
+
+    @Override
+    public User saveGitHubLogin(String username, String githubLogin) {
+        User user = userService.getUser(username);
+        UserProfile userProfile = user.getUserProfile();
+        userProfile.setGithub(githubLogin);
+        userService.saveUserProfile(userProfile);
+        return user;
+    }
 }
