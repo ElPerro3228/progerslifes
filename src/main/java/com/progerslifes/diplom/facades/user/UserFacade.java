@@ -3,6 +3,7 @@ package com.progerslifes.diplom.facades.user;
 import com.progerslifes.diplom.entity.User;
 import com.progerslifes.diplom.facades.dto.UserDTO;
 import com.progerslifes.diplom.facades.dto.UserProfileDTO;
+import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -24,4 +25,7 @@ public interface UserFacade {
 
     User getCurrentUser();
     User getUser(String username);
+    Page<User> getUsers(int page);
+
+    List<User> saveUsers(List<User> users);
 }

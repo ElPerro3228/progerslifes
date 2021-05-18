@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,6 +42,12 @@
                         <img src="/img/menu/profile.png" alt="">
                         <p>Profile</p>
                     </a>
+                    <div sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a th:href="@{/admin}" class="menuItem" data-tooltip="Admin">
+                            <img src="/img/menu/profile.png" alt="">
+                            <p>Admin</p>
+                        </a>
+                    </div>
                 </div>
                 <a href="#" class="tweetBtn"><p class="text">New Post</p></a>
             </div>
