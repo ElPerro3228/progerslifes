@@ -23,4 +23,5 @@ public interface UserFacade {
     User saveGitHubLogin(String username, String githubLogin);
 
     User getCurrentUser();
+    User getUser(String username);
 }

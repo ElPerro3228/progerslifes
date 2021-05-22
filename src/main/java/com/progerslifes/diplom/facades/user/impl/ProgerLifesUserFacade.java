@@ -126,4 +126,9 @@ public class ProgerLifesUserFacade implements UserFacade {
         userService.saveUserProfile(userProfile);
         return user;
     }
+
+    @Override
+    public User getUser(String username) {
+        return userService.getUser(username);
+    }
 }

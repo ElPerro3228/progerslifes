@@ -31,7 +31,7 @@
                     <span class="fio" th:text="${user.userProfile.name}+' '+ ${user.userProfile.surname}"></span>
                 </p>
                 <div class="description" th:text="${user.userProfile.description}"></div>
-                <a th:href="@{/profile/{username}/github(username=${user.username})}" class="description" th:text="${user.userProfile.github}" target="_blank"></a>
+                <a th:href="'https://github.com/'+${user.userProfile.github}" class="description" th:text="${user.userProfile.github}" target="_blank"></a>
                 <div class="birthday">
                     <img src="/img/menu/calendar.png" alt="">
                     <p th:text="${#calendars.format(user.userProfile.birthDate,'dd MMMM yyyy')}"></p>
