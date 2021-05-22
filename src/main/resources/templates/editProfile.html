@@ -56,6 +56,9 @@
                     <input name="profilePicture" type="hidden" th:value="${userProfile.profilePicture}" />
                 </div>
             </form>
+            <a th:href="@{/profile/connectGithub}" class="btn waves-effect waves-light blue darken-4 githubBtn">Connect to GitHub
+                <i class="material-icons right">send</i>
+            </a>
         </div>
         <div th:replace="fragments/rightmenu :: rightmenu"></div>
     </div>

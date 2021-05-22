@@ -159,6 +159,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
 .saveBtn:hover{
     background: #f28f1d34;
 }
+.githubBtn{
+    margin:10px 25px;
+}
 @media (max-width:1250px){
     .edit{
         margin-left: 50px;
