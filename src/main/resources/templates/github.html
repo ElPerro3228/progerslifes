@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
+    <link rel="stylesheet" th:href="@{/css/github.css}">
     <title>ProgersLife | Profile</title>
 </head>
 <body>
@@ -15,79 +16,35 @@
         <div th:replace="fragments/leftmenu :: leftmenu"></div>
         <div class="main">
             <div class="title">
-                <a href="" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
+                <a th:href="@{/home}" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
                 <div class="name-tweets">
                     <div class="username" th:text="${user.username}"></div>
-                    <div class="tweetCol">2 Tweets</div>
+                    <div class="tweetCol">GitHub</div>
                 </div>
             </div>
-            <div class="profile">
-                <div class="background">
-                    <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
-                    <a  th:href="@{/profile/edit}" class="editBtn">Edit Profile</a>
-                </div>
-                <p>
-                    <span class="username" th:text="${user.username}"></span> 
-                    <span class="fio" th:text="${user.userProfile.name}+' '+ ${user.userProfile.surname}"></span>
-                </p>
-                <div class="description" th:text="${user.userProfile.description}"></div>
-                <a th:href="'https://github.com/'+${user.userProfile.github}" class="description" th:text="${user.userProfile.github}" target="_blank"></a>
-                <div class="birthday">
-                    <img src="/img/menu/calendar.png" alt="">
-                    <p th:text="${#calendars.format(user.userProfile.birthDate,'dd MMMM yyyy')}"></p>
-                </div>
-                <div class="friends">
-                    <div class="following">
-                        <a th:href="@{/profile/{username}/following(username=${user.username})}" class="followNumb" th:text="${user.subscriptions.size() + ' Following'}"></a>
-                    </div>
-                    <div class="followers">
-                        <a th:href="@{/profile/{username}/followers(username=${user.username})}" class="followNumb" th:text="${user.subscribers.size() + ' Followers'}"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="posts">
-                <div class="tweetTitle">Posts</div>
-                <th:block th:each="post : ${user.posts}">
-                    <div class="post">
-                        <a th:href="@{/profile/}" class="post-header">
-                            <img th:src="${user.userProfile.profilePicture}" alt="" class="user-avatar">
-                            <div class="content">
-                                <div class="nameTime">
-                                    <span class="user-name" th:text="${post.user.username}"></span>
-                                    <span class="time" th:text="${#calendars.format(post.creationDate,'dd MMMM yyyy')}">3hrs</span>
-                                </div>
-                                <div class="contentText" th:text="${post.text}">
-                                </div>
-                            </div>                        
-                        </a>
-                        <div class="post-content">
-                            <img th:src="${post.picturePath}" alt="" class="post-img">
+            <div class="gitProfile">
+                <img src="" id="gitAvatar">
+                <div class="gitExtend">
+                    <div id="gitUsername"></div>
+                    <div class="gitInfo">
+                        <div id="gitDesc"></div>
+                        <div class="gitFol">
+                            <div id="gitFollowers"></div>
+                            <div id="gitFollowing"></div>
                         </div>
-                        <div class="post-footer">
-                            <div class="footerItem">
-                                <img src="/img/tweet/comment.png" alt="">
-                                <div class="footerNum">2</div>
-                            </div>
-                            <div class="footerItem">
-                                <img src="/img/tweet/retweet.png" alt="">
-                                <div class="footerNum">2</div>
-                            </div>
-                            <div class="footerItem">
-                                <img src="/img/tweet/like.png" alt="">
-                                <div class="footerNum">21</div>
-                            </div>
-                            <div class="footerItem">
-                                <img src="/img/tweet/share.png" alt="">
-                            </div>
-                        </div>
+                        <div id="gitLocation"></div>
                     </div>
-                </th:block>
+                </div>
             </div>
+            <ul id="gitRepos">
+
+            </ul>
         </div>
         <div th:replace="fragments/rightmenu :: rightmenu"></div>
     </div>
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" th:src="@{/scripts/script.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/github.js}"></script>
 </body>
 </html>

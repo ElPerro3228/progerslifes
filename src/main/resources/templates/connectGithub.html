@@ -8,9 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" th:href="@{/css/edit.css}">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
+    <link rel="stylesheet" th:href="@{/css/github.css}">
     <title>ProgersLife | Connect Github</title>
 </head>
 <body>
@@ -18,19 +18,21 @@
         <div th:replace="fragments/leftmenu :: leftmenu"></div>
         <div class="main">
             <form th:action="@{/profile/connectGithub}" th:object="${githubForm}" content="" method="post" class="form">
-                <div class="title">
-                    <a th:href="@{/home}" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
-                    <p>Edit Profile</p>
-                    <input type="submit" class="saveBtn" value="Save"/>
-                </div>
-                <div class="inputs">
-                    <div class="input-block">
-                        <label>Github Login</label>
-                        <input th:field="*{githubLogin}" class="input" type="text">
+                <div class="bg">
+                    <img src="/img/Group 1.png" alt="" class="gitLogo">
+                    <p class="bTitle">Connect to GitHub</p>
+                    <div class="inputs">
+                        <div class="input-block">
+                            <label>Enter your GitHub Login</label>
+                            <input th:field="*{githubLogin}" class="input" type="text">
+                        </div>
+                        <p th:if="${#fields.hasErrors('githubLogin')}" th:errors="*{githubLogin}">Name Error</p>
+                        <input type="hidden" th:field="*{username}" />
+
+                        <input type="submit" class="btn waves-effect waves-light blue darken-4 saveBtn" value="Connect"/>
                     </div>
-                    <p th:if="${#fields.hasErrors('githubLogin')}" th:errors="*{githubLogin}">Name Error</p>
-                    <input type="hidden" th:field="*{username}" />
                 </div>
+
             </form>
         </div>
         <div th:replace="fragments/rightmenu :: rightmenu"></div>
