@@ -18,7 +18,7 @@
             <a th:href="@{/home}" class="backBtn"><img src="/img/menu/arrowback.png" alt=""></a>
             <div class="name-tweets">
                 <div class="username" th:text="${user.username}"></div>
-                <div class="tweetCol">2 Tweets</div>
+                <div class="tweetCol">All Tweets</div>
             </div>
         </div>
         <div class="profile">
@@ -43,7 +43,10 @@
                 <span class="fio" th:text="${user.userProfile.name}+' '+ ${user.userProfile.surname}"></span>
             </p>
             <div class="description" th:text="${user.userProfile.description}"></div>
-            <a th:href="@{/profile/{username}/github(username=${user.username})}" class="github" th:text="${user.userProfile.github}"></a>
+            <div class="gitBlock">
+                <img src="/img/git.png" alt="">
+                <a th:href="@{/profile/{username}/github(username=${user.username})}" class="github" id="github" th:text="${user.userProfile.github}"></a>
+            </div>
             <div class="birthday">
                 <img src="/img/menu/calendar.png" alt="">
                 <p th:text="${#calendars.format(user.userProfile.birthDate,'dd MMMM yyyy')}"></p>

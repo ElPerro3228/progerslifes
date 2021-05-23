@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
                 const card = document.createElement('li');
                 card.innerHTML = `
                             <a href="${item.svn_url}" class="repo" target="_blank">
+                                <img src="/img/common/star.png" alt="">
                                 <span class="name">${item.full_name}</span>
                                 <span class="desc">${item.description}</span>
                                 <span class="lang">${item.language}</span>

@@ -58,7 +58,7 @@ input[type="submit"]{
     margin: 0 auto;
 }
 #gitRepos li{
-    background: #a9b5d6;
+    background: #cad4ec;
     border-radius: 10px;
     padding: 20px 15px;
     margin: 5px 0;
@@ -67,4 +67,24 @@ input[type="submit"]{
     display: flex;
     flex-direction: column;
 }
-
+.fio{
+    font-weight: 500;
+}
+.followers{
+    font-weight: bold;
+}
+.name{
+    color:#58a6ff;
+    font-size: 20px;
+    font-weight: 600;
+}
+.desc{
+    font-size:14px;
+}
+.lang{
+    font-size: 14px;
+}
+.repo img{
+    height: 24px;
+    width: 24px;
+}
