@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" th:href="@{/css/edit.css}">
+    <link rel="stylesheet" th:href="@{/css/profile.css}">
+    <link rel="stylesheet" th:href="@{/css/left-right.css}">
+    <title>ProgersLife | Edit Profile</title>
+</head>
+<body>
+<div class="wrapper">
+    <div th:replace="fragments/leftmenu :: leftmenu"></div>
+    <div class="main">
+
+        <form th:action="@{/admin/users/update}" th:object="${updateUsersForm}" method="post" class="form">
+            <input type="submit" class="saveBtn" value="Save"/>
+            <table border="1px" class="table">
+                <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>Username</td>
+                    <td>Enabled</td>
+                    <td>Role</td>
+                </tr>
+                </thead>
+            <th:block th:each="user, itemStat : ${updateUsersForm.getUsers()}">
+                <tr>
+                    <td th:text="${user.id}">
+                        <input type="hidden" th:field="*{users[__${itemStat.index}__].id}" class="input" th:value="${updateUsersForm.users[__${itemStat.index}__].id}">
+                    </td>
+                    <td>
+                        <a th:text="${user.username}" th:href="@{/profile/} + ${user.username}"></a>
+                        <input type="hidden" th:field="*{users[__${itemStat.index}__].username}" class="input" th:value="${updateUsersForm.users[__${itemStat.index}__].username}">
+                    </td>
+                    <td th:text="${user.enabled}">
+                        <input type="hidden" th:field="*{users[__${itemStat.index}__].enabled}" class="input" th:value="${updateUsersForm.users[__${itemStat.index}__].enabled}">
+                    </td>
+                    <td>
+                        <input th:field="*{users[__${itemStat.index}__].role}" class="input" type="text" th:value="${updateUsersForm.users[__${itemStat.index}__].role}">
+                        <p th:if="${#fields.hasErrors('users[__${itemStat.index}__].role')}" th:errors="*{users[__${itemStat.index}__].role}">Try again</p>
+                    </td>
+                    <input th:field="*{pages}" class="input" type="hidden" th:value="${updateUsersForm.pages}">
+                    <input th:field="*{page}" class="input" type="hidden" th:value="${updateUsersForm.page}">
+                    <td>
+                        <button name="delete-from-cart" type="button" class="btn btn-outline-success" th:data-phone-id="${user.id}">Delete</button>
+                    </td>
+                </tr>
+            </th:block>
+            </table>
+        </form>
+        <div th:if="${updateUsersForm.pages > 1}">
+            <th:block th:each="i : ${#numbers.sequence(1, updateUsersForm.pages)}">
+                <a th:href="@{/admin(page = ${i})}" th:text="${i}"></a>
+            </th:block>
+        </div>
+    </div>
+    <div th:replace="fragments/rightmenu :: rightmenu"></div>
+</div>
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="text/javascript" th:src="@{/scripts/script.js}"></script>
+</body>
+</html>

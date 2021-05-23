@@ -9,6 +9,9 @@ import com.progerslifes.diplom.services.UserService;
 import com.progerslifes.diplom.services.exception.CurrentUserAlreadyFollowsUser;
 import com.progerslifes.diplom.services.exception.UserRegistrationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -24,12 +27,11 @@ public class ProgersLifesUserService implements UserService {
     @Autowired
     private AuthenticationService authenticationService;
 
+    @Value("${admin.page.size}")
+    private int pageSize;
+
     @Override
     public User saveUser(User user) {
-        User dbUser = userRepository.getUserByUsername(user.getUsername());
-        if (dbUser != null) {
-            throw new UserRegistrationException("user with name " + user.getUsername() + " already exists");
-        }
         user.setLastModified(new Date());
         return userRepository.save(user);
     }
@@ -69,5 +71,11 @@ public class ProgersLifesUserService implements UserService {
             currentUser = userRepository.save(currentUser);
         }
         return currentUser;
+    }
+
+    @Override
+    public Page<User> getUsers(int page) {
+        PageRequest pageRequest = PageRequest.of(page - 1, pageSize);
+        return userRepository.findAll(pageRequest);
     }
 }

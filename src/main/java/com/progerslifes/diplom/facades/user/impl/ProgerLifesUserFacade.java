@@ -12,14 +12,17 @@ import com.progerslifes.diplom.services.AuthenticationService;
 import com.progerslifes.diplom.services.UploadService;
 import com.progerslifes.diplom.services.UserService;
 import com.progerslifes.diplom.services.builders.UserProfileBuilder;
+import com.progerslifes.diplom.utils.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -130,5 +133,20 @@ public class ProgerLifesUserFacade implements UserFacade {
     @Override
     public User getUser(String username) {
         return userService.getUser(username);
+    }
+
+    @Override
+    public Page<User> getUsers(int page) {
+        return userService.getUsers(page);
+    }
+
+    @Override
+    public List<User> saveUsers(List<User> users) {
+        for (User user : users) {
+            User existing = userService.getUser(user.getUsername());
+            EntityUtils.copyNonNullProperties(user, existing);
+            userService.saveUser(existing);
+        }
+        return users;
     }
 }
