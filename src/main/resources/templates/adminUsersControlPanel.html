@@ -55,7 +55,7 @@
             </table>
         </form>
         <div th:if="${updateUsersForm.pages > 1}">
-            <th:block th:each="i : ${#numbers.sequence(1, updateUsersForm.pages + 1)}">
+            <th:block th:each="i : ${#numbers.sequence(1, updateUsersForm.pages)}">
                 <a th:href="@{/admin(page = ${i})}" th:text="${i}"></a>
             </th:block>
         </div>
