@@ -9,4 +9,8 @@ public interface PostService {
     List<Post> getPosts(User user);
     List<Post> getPosts(List<User> users);
     void save(Post post);
+
+    List<Post> getMostRelevantPosts();
+
+    Post getPostById(int id);
 }

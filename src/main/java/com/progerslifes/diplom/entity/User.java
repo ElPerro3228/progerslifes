@@ -11,11 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -67,6 +67,9 @@ public class User {
             inverseJoinColumns=@JoinColumn(name="user_one_id")
     )
     private List<User> subscribers;
+
+    @OneToMany(mappedBy = "user", cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH })
+    private List<Like> likes;
 
     public User() {
     }
@@ -193,5 +196,13 @@ public class User {
 
     public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
+    }
+
+    public List<Like> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(List<Like> likeList) {
+        this.likes = likeList;
     }
 }

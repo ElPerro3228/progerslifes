@@ -9,11 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "profile")
-public class UserProfile {
+public class UserProfile implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
