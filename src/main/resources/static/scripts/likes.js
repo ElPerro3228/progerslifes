@@ -8,7 +8,8 @@ for (var i = 0; i < elements.length; i++) {
             method:'post',
             headers: new Headers({
                 'Autorization':'Basic',
-                'Accept':'application/json'
+                'Accept':'application/json',
+                'Content-Type':'application/json'
             }),
             body: JSON.stringify({
                 postId: $postId
@@ -17,7 +18,6 @@ for (var i = 0; i < elements.length; i++) {
 
         if (response.ok) {
             $this.className += ' pink darken-1';
-            $this.className.replace(' pink darken-1', '');
             $this.className.replace(' likeButton', 'deleteLike');
         }
     }, false);
@@ -34,7 +34,8 @@ for (var i = 0; i < elements.length; i++) {
             method:'delete',
             headers: new Headers({
                 'Autorization':'Basic',
-                'Accept':'application/json'
+                'Accept':'application/json',
+                'Content-Type':'application/json'
             }),
             body: JSON.stringify({
                 postId: $postId
@@ -42,7 +43,6 @@ for (var i = 0; i < elements.length; i++) {
         });
 
         if (response.ok) {
-            $this.className += ' pink darken-1';
             $this.className.replace(' pink darken-1', '');
             $this.className.replace(' deleteLike', 'likeButton');
         }

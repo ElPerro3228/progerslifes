@@ -51,10 +51,19 @@
                             <img src="/img/tweet/retweet.png" alt="">
                             <div class="footerNum">2</div>
                         </div>
-                        <div class="footerItem likeButton" th:data-post-id="${post.id}">
-                            <img src="/img/tweet/like.png" alt="">
-                            <div class="footerNum" th:text="${post.likesCount}"></div>
+                        <div th:if="${post.likedByCurrentUser}">
+                            <div class="footerItem deleteLike pink darken-1" th:data-post-id="${post.id}">
+                                <img src="/img/tweet/like.png" alt="">
+                                <div class="footerNum" th:text="${post.likesCount}"></div>
+                            </div>
                         </div>
+                        <div th:unless="${post.likedByCurrentUser}">
+                            <div class="footerItem likeButton" th:data-post-id="${post.id}">
+                                <img src="/img/tweet/like.png" alt="">
+                                <div class="footerNum" th:text="${post.likesCount}"></div>
+                            </div>
+                        </div>
+
                         <div class="footerItem">
                             <img src="/img/tweet/share.png" alt="">
                         </div>

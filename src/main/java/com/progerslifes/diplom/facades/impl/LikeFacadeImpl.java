@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -47,5 +48,18 @@ public class LikeFacadeImpl implements LikeFacade {
         User user = userFacade.getCurrentUser();
         Like like = likeService.getLikeByPostAndUser(postId, user.getId());
         likeService.delete(like);
+    }
+
+    @Override
+    public void markPostsLikedByCurrentUser(List<Post> posts) {
+        User user = userFacade.getCurrentUser();
+        List<Like> likes = user.getLikes();
+        Set<Post> likedPosts = likes.stream()
+                .map(Like::getPost)
+                .collect(Collectors.toSet());
+        Set<Post> postSet = Set.copyOf(posts);
+        posts.stream()
+                .filter(post -> likedPosts.contains(post))
+                .forEach(post -> post.setLikedByCurrentUser(true));
     }
 }

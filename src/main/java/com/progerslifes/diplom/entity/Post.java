@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -41,6 +42,9 @@ public class Post {
 
     @Column(name = "likescount")
     private int likesCount;
+
+    @Transient
+    private Boolean isLikedByCurrentUser;
 
     public Post() {
     }
@@ -99,6 +103,14 @@ public class Post {
 
     public void setLikesCount(int likesCount) {
         this.likesCount = likesCount;
+    }
+
+    public Boolean getLikedByCurrentUser() {
+        return isLikedByCurrentUser;
+    }
+
+    public void setLikedByCurrentUser(Boolean likedByCurrentUser) {
+        isLikedByCurrentUser = likedByCurrentUser;
     }
 
     @Override
