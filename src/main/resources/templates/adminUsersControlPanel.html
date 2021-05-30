@@ -17,7 +17,20 @@
 <div class="wrapper">
     <div th:replace="fragments/leftmenu :: leftmenu"></div>
     <div class="main">
-
+        <div class="row">
+            <div class="col s4">
+                <img src="" alt="" id="server">
+                <p>Server Status</p>
+            </div>
+            <div class="col s4">
+                <img src="" alt="" id="sql">
+                <p>SQL Status</p>
+            </div>
+            <div class="col s4">
+                <img src="" alt="" id="solr">
+                <p>SOLR Status</p>
+            </div>
+        </div>
         <form th:action="@{/admin/users/update}" th:object="${updateUsersForm}" method="post" class="form">
             <input type="submit" class="saveBtn" value="Save"/>
             <table border="1px" class="table">
@@ -38,32 +51,43 @@
                         <a th:text="${user.username}" th:href="@{/profile/} + ${user.username}"></a>
                         <input type="hidden" th:field="*{users[__${itemStat.index}__].username}" class="input" th:value="${updateUsersForm.users[__${itemStat.index}__].username}">
                     </td>
-                    <td th:text="${user.enabled}">
+                    <td>
+                        <div class="input-field">
+                            <select th:field="*{users[__${itemStat.index}__].enabled}">
+                                <option th:value="true" th:text="Enabled"></option>
+                                <option th:value="false" th:text="Banned"></option>
+                            </select>
+                        </div>
                         <input type="hidden" th:field="*{users[__${itemStat.index}__].enabled}" class="input" th:value="${updateUsersForm.users[__${itemStat.index}__].enabled}">
                     </td>
                     <td>
-                        <input th:field="*{users[__${itemStat.index}__].role}" class="input" type="text" th:value="${updateUsersForm.users[__${itemStat.index}__].role}">
-                        <p th:if="${#fields.hasErrors('users[__${itemStat.index}__].role')}" th:errors="*{users[__${itemStat.index}__].role}">Try again</p>
+                        <div class="input-field">
+                            <select th:field="*{users[__${itemStat.index}__].role}">
+                                <option th:value="USER" th:text="USER"></option>
+                                <option th:value="ROLE_ADMIN" th:text="ROLE_ADMIN"></option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <button name="delete-from-cart" type="button" class="btn amber darken-1" th:data-phone-id="${user.id}">Delete</button>
                     </td>
                     <input th:field="*{pages}" class="input" type="hidden" th:value="${updateUsersForm.pages}">
                     <input th:field="*{page}" class="input" type="hidden" th:value="${updateUsersForm.page}">
-                    <td>
-                        <button name="delete-from-cart" type="button" class="btn btn-outline-success" th:data-phone-id="${user.id}">Delete</button>
-                    </td>
                 </tr>
             </th:block>
             </table>
         </form>
-        <div th:if="${updateUsersForm.pages > 1}">
+        <ul class="pagination" th:if="${updateUsersForm.pages > 1}">
             <th:block th:each="i : ${#numbers.sequence(1, updateUsersForm.pages)}">
-                <a th:href="@{/admin(page = ${i})}" th:text="${i}"></a>
+                <li class="waves-effect"><a th:href="@{/admin(page = ${i})}" th:text="${i}"></a></li>
             </th:block>
-        </div>
+        </ul>
     </div>
     <div th:replace="fragments/rightmenu :: rightmenu"></div>
 </div>
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script type="text/javascript" th:src="@{/scripts/script.js}"></script>
+<script type="text/javascript" th:src="@{/scripts/admin.js}"></script>
 </body>
 </html>

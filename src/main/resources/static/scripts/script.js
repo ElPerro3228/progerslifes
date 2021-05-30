@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function() {
     $('input#input_text, textarea#textarea2').characterCounter();
 });
+$(document).ready(function(){
+    $('select').formSelect();
+});
 document.getElementById('search').addEventListener('input', function(e) {
 
         fetch(`http://localhost:8080/suggest?query=${document.getElementById('search').value}`,{
