@@ -9,4 +9,7 @@ public interface LikeRepository extends JpaRepository<Like, Integer> {
 
     @Query(value = "SELECT * FROM likes WHERE user_id = :user_id AND post_id = :post_id", nativeQuery = true)
     Like findLikeByUserIdAndPostId(@Param("user_id") Integer userId, @Param("post_id") Integer postId);
+
+    @Query(value = "SELECT COUNT(*) FROM likes WHERE post_id = :post_id", nativeQuery = true)
+    int getCountByPost(@Param("post_id") int postId);
 }

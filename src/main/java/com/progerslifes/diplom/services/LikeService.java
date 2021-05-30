@@ -8,4 +8,6 @@ public interface LikeService {
     void delete(Like like);
 
     Like getLikeByPostAndUser(int postId, int userId);
+
+    int getLikesCountByPost(int postId);
 }

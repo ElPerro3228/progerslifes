@@ -2,10 +2,11 @@ package com.progerslifes.diplom.facades.dto;
 
 import java.io.Serializable;
 
-public class LikeDTO implements Serializable {
+public class LikesDTO implements Serializable {
     private int id;
     private int postId;
     private int userId;
+    private int postLikes;
 
     public int getId() {
         return id;
@@ -29,5 +30,13 @@ public class LikeDTO implements Serializable {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getPostLikes() {
+        return postLikes;
+    }
+
+    public void setPostLikes(int postLikes) {
+        this.postLikes = postLikes;
     }
 }

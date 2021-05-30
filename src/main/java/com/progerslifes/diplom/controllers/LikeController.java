@@ -1,7 +1,7 @@
 package com.progerslifes.diplom.controllers;
 
 import com.progerslifes.diplom.facades.LikeFacade;
-import com.progerslifes.diplom.facades.dto.LikeDTO;
+import com.progerslifes.diplom.facades.dto.LikesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -19,14 +18,14 @@ public class LikeController {
     private LikeFacade likeFacade;
 
     @PostMapping(value = "/like", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<LikeDTO> addLike(@RequestBody LikeDTO likeDTO) {
-        LikeDTO like = likeFacade.saveLike(likeDTO.getPostId());
+    public ResponseEntity<LikesDTO> addLike(@RequestBody LikesDTO likesDTO) {
+        LikesDTO like = likeFacade.saveLike(likesDTO.getPostId());
         return new ResponseEntity<>(like, HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/like", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> deleteLike(@RequestBody LikeDTO likeDTO) {
-        likeFacade.deleteLike(likeDTO.getPostId());
-        return new ResponseEntity<>("deleted", HttpStatus.OK);
+    public ResponseEntity<LikesDTO> deleteLike(@RequestBody LikesDTO likesDTO) {
+        LikesDTO likes = likeFacade.deleteLike(likesDTO.getPostId());
+        return new ResponseEntity<>(likes, HttpStatus.OK);
     }
 }

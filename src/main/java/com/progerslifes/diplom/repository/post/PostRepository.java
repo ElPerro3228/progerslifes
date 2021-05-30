@@ -23,7 +23,7 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
 
     List<Post> findAllByOrderByCreationDateAsc();
 
-    @Query(value = "SELECT * FROM post WHERE creationDate >= curdate() - INTERVAL DAYOFWEEK(curdate())+20 DAY " +
+    @Query(value = "SELECT * FROM post WHERE creationDate >= curdate() - INTERVAL DAYOFWEEK(curdate())+30 DAY " +
             "ORDER BY likesCount DESC", nativeQuery = true)
     Page<Post> findAllByOrderByLikes(Pageable pageable);
 }

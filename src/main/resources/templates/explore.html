@@ -52,7 +52,7 @@
                             <div class="footerNum">2</div>
                         </div>
                         <div th:if="${post.likedByCurrentUser}">
-                            <div class="footerItem deleteLike pink darken-1" th:data-post-id="${post.id}">
+                            <div class="footerItem likeButton delete" th:data-post-id="${post.id}">
                                 <img src="/img/tweet/like.png" alt="">
                                 <div class="footerNum" th:text="${post.likesCount}"></div>
                             </div>

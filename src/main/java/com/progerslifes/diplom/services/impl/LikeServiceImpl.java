@@ -26,4 +26,9 @@ public class LikeServiceImpl implements LikeService {
     public Like getLikeByPostAndUser(int postId, int userId) {
         return likeRepository.findLikeByUserIdAndPostId(userId, postId);
     }
+
+    @Override
+    public int getLikesCountByPost(int postId) {
+        return likeRepository.getCountByPost(postId);
+    }
 }

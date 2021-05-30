@@ -5,7 +5,8 @@ import com.progerslifes.diplom.entity.Post;
 import com.progerslifes.diplom.entity.User;
 import com.progerslifes.diplom.facades.LikeFacade;
 import com.progerslifes.diplom.facades.converters.user.LikeConverter;
-import com.progerslifes.diplom.facades.dto.LikeDTO;
+import com.progerslifes.diplom.facades.dto.LikesDTO;
+import com.progerslifes.diplom.facades.exceptions.LikeHasBeenLeftAlready;
 import com.progerslifes.diplom.facades.user.UserFacade;
 import com.progerslifes.diplom.services.LikeService;
 import com.progerslifes.diplom.services.PostService;
@@ -13,9 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Component
@@ -34,20 +33,31 @@ public class LikeFacadeImpl implements LikeFacade {
     private LikeConverter likeConverter;
 
     @Override
-    public LikeDTO saveLike(int postId) {
+    public LikesDTO saveLike(int postId) {
         Like like = new Like();
         Post post = postService.getPostById(postId);
         User user = userFacade.getCurrentUser();
-        like.setPost(post);
-        like.setUser(user);
-        return likeConverter.convert(likeService.save(like));
+        if (likeService.getLikeByPostAndUser(postId, user.getId()) == null) {
+            saveLike(like, post, user);
+            updatePostLikesCount(postId, post);
+            LikesDTO likesDTO = likeConverter.convert(like);
+            likesDTO.setPostLikes(post.getLikesCount());
+            return likesDTO;
+        } else {
+            throw new LikeHasBeenLeftAlready();
+        }
     }
 
     @Override
-    public void deleteLike(int postId) {
+    public LikesDTO deleteLike(int postId) {
         User user = userFacade.getCurrentUser();
+        Post post = postService.getPostById(postId);
         Like like = likeService.getLikeByPostAndUser(postId, user.getId());
+        LikesDTO likesDTO = likeConverter.convert(like);
         likeService.delete(like);
+        updatePostLikesCount(postId, post);
+        likesDTO.setPostLikes(post.getLikesCount());
+        return likesDTO;
     }
 
     @Override
@@ -57,9 +67,19 @@ public class LikeFacadeImpl implements LikeFacade {
         Set<Post> likedPosts = likes.stream()
                 .map(Like::getPost)
                 .collect(Collectors.toSet());
-        Set<Post> postSet = Set.copyOf(posts);
         posts.stream()
                 .filter(post -> likedPosts.contains(post))
                 .forEach(post -> post.setLikedByCurrentUser(true));
+    }
+
+    private void saveLike(Like like, Post post, User user) {
+        like.setPost(post);
+        like.setUser(user);
+        likeService.save(like);
+    }
+
+    private void updatePostLikesCount(int postId, Post post) {
+        post.setLikesCount(likeService.getLikesCountByPost(postId));
+        postService.save(post);
     }
 }
