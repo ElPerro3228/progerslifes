@@ -2,7 +2,7 @@ var elements = document.getElementsByClassName("likeButton");
 
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', function(e) {
-        let postId = e.target.data('postId');
+        let postId = e.target.getAttribute("data-post-id");
         if (!e.target.classList.contains("delete")) {
             fetch(`http://localhost:8080/like`,{
                 method: 'post',
@@ -28,7 +28,7 @@ for (var i = 0; i < elements.length; i++) {
                     'Content-Type':'application/json'
                 }),
                 body: JSON.stringify({
-                    postId: $postId
+                    postId: postId
                 })
             }).then((response) => {
                 if (response.ok) {
