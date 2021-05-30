@@ -23,7 +23,7 @@
             </div>
             <div class="profile">
                 <div class="background">
-                    <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
+                    <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar materialboxed">
                     <a  th:href="@{/profile/edit}" class="editBtn">Edit Profile</a>
                 </div>
                 <p>
@@ -64,7 +64,7 @@
                             </div>                        
                         </a>
                         <div class="post-content">
-                            <img th:src="${post.picturePath}" alt="" class="post-img">
+                            <img th:src="${post.picturePath}" alt="" class="post-img materialboxed">
                         </div>
                         <div class="post-footer">
                             <div class="footerItem">

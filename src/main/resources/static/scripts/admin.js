@@ -1,6 +1,18 @@
 let server = document.getElementById('server'),
     sql = document.getElementById('sql'),
-    solr = document.getElementById('solr');
+    solr = document.getElementById('solr'),
+    solrUp = document.getElementById('solrUp');
+solrUp.addEventListener('click',()=>{
+    const url = 'http://localhost:8080/data/import?command=full-import';
+    const response = fetch(url, {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {
+            'accept': 'application/json',
+            'Autorization':'Basic'
+        }
+    });
+})
 document.addEventListener('DOMContentLoaded', function(e) {
     fetch(`http://localhost:8080/actuator/health`,{
         method:'get',

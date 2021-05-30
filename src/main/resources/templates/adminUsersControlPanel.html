@@ -11,12 +11,14 @@
     <link rel="stylesheet" th:href="@{/css/edit.css}">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
     <title>ProgersLife | Edit Profile</title>
 </head>
 <body>
 <div class="wrapper">
     <div th:replace="fragments/leftmenu :: leftmenu"></div>
     <div class="main">
+        <button id="solrUp" class="saveBtn">Update Solr</button>
         <div class="row">
             <div class="col s4">
                 <img src="" alt="" id="server">
@@ -83,7 +85,6 @@
             </th:block>
         </ul>
     </div>
-    <div th:replace="fragments/rightmenu :: rightmenu"></div>
 </div>
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
