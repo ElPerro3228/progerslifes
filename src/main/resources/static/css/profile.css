@@ -214,6 +214,9 @@ img {
 .gitBlock img{
     height: 32px;
 }
+.delete{
+    background: #e25858;
+}
 @media (max-width:825px){
     .main{
         width: 60%;

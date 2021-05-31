@@ -75,9 +75,17 @@
                                 <img src="/img/tweet/retweet.png" alt="">
                                 <div class="footerNum">2</div>
                             </div>
-                            <div class="footerItem">
-                                <img src="/img/tweet/like.png" alt="">
-                                <div class="footerNum">21</div>
+                            <div th:if="${post.likedByCurrentUser}">
+                                <div class="footerItem likeButton delete" th:data-post-id="${post.id}">
+                                    <img src="/img/tweet/like.png" alt="">
+                                    <div class="footerNum" th:text="${post.likesCount}"></div>
+                                </div>
+                            </div>
+                            <div th:unless="${post.likedByCurrentUser}">
+                                <div class="footerItem likeButton" th:data-post-id="${post.id}">
+                                    <img src="/img/tweet/like.png" alt="">
+                                    <div class="footerNum" th:text="${post.likesCount}"></div>
+                                </div>
                             </div>
                             <div class="footerItem">
                                 <img src="/img/tweet/share.png" alt="">
@@ -92,6 +100,7 @@
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript" th:src="@{/scripts/script.js}"></script>
+    <script type="text/javascript" th:src="@{/scripts/likes.js}"></script>
     <script type="text/javascript" th:src="@{/scripts/github.js}"></script>
 </body>
 </html>

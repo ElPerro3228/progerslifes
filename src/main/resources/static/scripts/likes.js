@@ -14,9 +14,11 @@ for (var i = 0; i < elements.length; i++) {
                 body: JSON.stringify({
                     postId: postId
                 })
-            }).then((response) => {
-                if (response.ok) {
+            }).then((response) => response.json())
+                .then((responsejson) => {
+                if (responsejson.ok) {
                     e.target.classList.toggle('delete');
+                    e.target.children[1].textContent = `${responsejson.postLikes}`;
                 }
             });
         } else {
@@ -30,9 +32,11 @@ for (var i = 0; i < elements.length; i++) {
                 body: JSON.stringify({
                     postId: postId
                 })
-            }).then((response) => {
-                if (response.ok) {
+            }).then((response) => response.json())
+                .then((responsejson) => {
+                if (responsejson.ok) {
                     e.target.classList.toggle('delete');
+                    e.target.children[1].textContent = `${responsejson.postLikes}`;
                 }
             });
         }
