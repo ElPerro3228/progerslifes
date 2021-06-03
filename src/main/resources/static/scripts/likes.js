@@ -2,8 +2,9 @@ var elements = document.getElementsByClassName("likeButton");
 
 for (var i = 0; i < elements.length; i++) {
     elements[i].addEventListener('click', function(e) {
-        let postId = e.target.getAttribute("data-post-id");
-        if (!e.target.classList.contains("delete")) {
+        let $this = $(this);
+        let postId = $this.data('postId');
+        if (!$this[0].classList.contains("delete")) {
             fetch(`http://localhost:8080/like`,{
                 method: 'post',
                 headers: new Headers({
@@ -14,13 +15,16 @@ for (var i = 0; i < elements.length; i++) {
                 body: JSON.stringify({
                     postId: postId
                 })
-            }).then((response) => response.json())
-                .then((responsejson) => {
-                if (responsejson.ok) {
-                    e.target.classList.toggle('delete');
-                    e.target.children[1].textContent = `${responsejson.postLikes}`;
-                }
-            });
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        $this[0].classList.toggle('delete');
+                        return response.json();
+                    }
+            })
+                .then((responseJson) => {
+                    $this[0].children[1].textContent = `${responseJson.postLikes}`;
+                });
         } else {
             fetch(`http://localhost:8080/like`,{
                 method:'delete',
@@ -32,13 +36,16 @@ for (var i = 0; i < elements.length; i++) {
                 body: JSON.stringify({
                     postId: postId
                 })
-            }).then((response) => response.json())
-                .then((responsejson) => {
-                if (responsejson.ok) {
-                    e.target.classList.toggle('delete');
-                    e.target.children[1].textContent = `${responsejson.postLikes}`;
-                }
-            });
+            })
+                .then((response) => {
+                    if (response.ok) {
+                        $this[0].classList.toggle('delete');
+                        return response.json();
+                    }
+            })
+                .then((responseJson) => {
+                    $this[0].children[1].textContent = `${responseJson.postLikes}`;
+                });
         }
     });
 }
