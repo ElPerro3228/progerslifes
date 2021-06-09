@@ -6,6 +6,17 @@ document.addEventListener('DOMContentLoaded', function() {
 $(document).ready(function() {
     $('input#input_text, textarea#textarea2').characterCounter();
 });
+// $( "#comments" ).click(function() {
+//     $( "#comments" ).parent(".post").children(".comments").hide("slow");
+// });
+document.querySelectorAll('#comments').forEach(item =>{
+    item.addEventListener('click',(e)=>{
+        let parent = e.target.closest(".post");
+        let parentComments = parent.children[3];
+        // let parentComments = $(parent).find(".comment");
+        parentComments.classList.toggle("close");
+    })
+})
 document.getElementById('search').addEventListener('input', function(e) {
 
         fetch(`http://localhost:8080/suggest?query=${document.getElementById('search').value}`,{
@@ -33,5 +44,4 @@ document.getElementById('search').addEventListener('input', function(e) {
                     document.getElementById('searchResults').append(card);
                 });
             });
-
 });
