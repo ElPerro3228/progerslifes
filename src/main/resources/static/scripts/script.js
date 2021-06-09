@@ -17,6 +17,12 @@ document.querySelectorAll('#comments').forEach(item =>{
         parentComments.classList.toggle("close");
     })
 })
+$(document).ready(function(){
+    $('.materialboxed').materialbox();
+});
+$(document).ready(function(){
+    $('select').formSelect();
+});
 document.getElementById('search').addEventListener('input', function(e) {
 
         fetch(`http://localhost:8080/suggest?query=${document.getElementById('search').value}`,{
