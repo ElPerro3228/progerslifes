@@ -71,6 +71,16 @@ img {
     width: 130px;
     height: 130px;
 }
+.explore_search{
+    background: #e6ecf0;
+    color: #1a2328;
+    border: none;
+    outline: none;
+    border-radius: 25px 25px 0 0;
+    padding: 5px 15px 10px;
+    font-size: 15px;
+    width: 100%;
+}
 .editBtn{
     position: absolute;
     bottom: -25%;
@@ -143,6 +153,39 @@ img {
     border-bottom: 1px solid #E6ECF0;
     transition: all .3s linear;
 }
+.comments{
+    margin-top: 10px;
+    transition: height .3s linear;
+}
+.create-post-body{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.comment{
+    padding: 10px 0px;
+    border-top: 1px solid #E6ECF0;
+    border-bottom: 1px solid #E6ECF0;
+    transition: all .3s linear;
+}
+.newComment{
+    margin-top: 10px;
+    border-top: 1px solid #E6ECF0;
+    border-bottom: 1px solid #E6ECF0;
+    padding: 10px 15px;
+}
+.commentBtn{
+    background: #F2901D;
+    margin-left: 10px;
+    margin-top: 5px;
+    padding-top: 5px;
+}
+.commentAvatar{
+    width: 45px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
 .post:hover{
     background: #ebf0f3;
 }
@@ -189,6 +232,7 @@ img {
     align-items: center;
     transition: all .3s linear;
 }
+
 .footerItem:hover{
     transform: scale(1.1);
     background: #f28f1d71;
@@ -213,6 +257,38 @@ img {
 }
 .gitBlock img{
     height: 32px;
+}
+.close{
+    display: none;
+}
+.exploreSearchResults{
+    list-style-type: none;
+    margin-top: 10px;
+    border-top: 1px solid #E6ECF0;
+    border-bottom: 1px solid #E6ECF0;
+    padding: 10px 15px;
+}
+.exploreSearchResults li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    border-top: 1px solid #E6ECF0;
+    border-bottom: 1px solid #E6ECF0;
+}
+.exploreSearchResults li:hover{
+    background: rgb(79, 122, 216);
+}
+.exploreSearchResults li a{
+    display: flex;
+    align-items: center;
+}
+.exploreSearchResults li img{
+    border: 2px solid #1a2328;
+    color: #1a2328;
+}
+.exploreSearchResults li span{
+    margin-left: 5px;
+    color: #1a2328;
 }
 @media (max-width:825px){
     .main{

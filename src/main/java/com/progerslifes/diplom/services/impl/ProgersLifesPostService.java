@@ -5,6 +5,8 @@ import com.progerslifes.diplom.entity.User;
 import com.progerslifes.diplom.repository.post.PostRepository;
 import com.progerslifes.diplom.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,9 @@ public class ProgersLifesPostService implements PostService {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Value("${page.explore.size}")
+    private int size;
 
     @Override
     public List<Post> getPosts(User user) {
@@ -28,5 +33,16 @@ public class ProgersLifesPostService implements PostService {
     @Override
     public void save(Post post) {
         postRepository.save(post);
+    }
+
+    @Override
+    public List<Post> getMostRelevantPosts() {
+        PageRequest pageRequest = PageRequest.of(0, size);
+        return postRepository.findAllByOrderByLikes(pageRequest).getContent();
+    }
+
+    @Override
+    public Post getPostById(int id) {
+        return postRepository.findPostById(id);
     }
 }
