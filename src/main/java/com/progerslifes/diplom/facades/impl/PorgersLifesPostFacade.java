@@ -5,6 +5,7 @@ import com.progerslifes.diplom.facades.PostFacade;
 import com.progerslifes.diplom.facades.ProfilePageFacade;
 import com.progerslifes.diplom.facades.converters.PostConverter;
 import com.progerslifes.diplom.facades.dto.PostDTO;
+import com.progerslifes.diplom.facades.user.UserFacade;
 import com.progerslifes.diplom.services.PostService;
 import com.progerslifes.diplom.services.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,10 @@ public class PorgersLifesPostFacade implements PostFacade {
         Post post = postConverter.convert(postDTO);
         if ((!image.isEmpty()) && (image.getSize() != 0)) {
             savePostPicture(image, post);
+        }
+        if (postDTO.getAncestorId() > 0) {
+            Post ancestor = postService.getPostById(postDTO.getAncestorId());
+            post.setAncestor(ancestor);
         }
         post.setUser(profilePageFacade.getUser());
         postService.save(post);

@@ -11,6 +11,8 @@ public class PostDTO {
 
     private int userId;
 
+    private int ancestorId;
+
     public String getText() {
         return text;
     }
@@ -25,5 +27,13 @@ public class PostDTO {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getAncestorId() {
+        return ancestorId;
+    }
+
+    public void setAncestorId(int ancestorId) {
+        this.ancestorId = ancestorId;
     }
 }

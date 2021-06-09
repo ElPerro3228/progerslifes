@@ -64,6 +64,18 @@
             <div class="tweetTitle">Posts</div>
             <th:block th:each="post : ${user.posts}">
                 <div class="post">
+
+                    <div class="ancestor" th:if="${post.ancestor} != null">
+                        <div class="content">
+                            <div class="nameTime">
+                                <span class="user-name" th:text="'Responded to user' + ${post.ancestor.user.username}"></span>
+                                <span class="time" th:text="${#calendars.format(post.ancestor.creationDate,'dd MMMM yyyy')}">3hrs</span>
+                            </div>
+                            <div class="contentText" th:text="${post.ancestor.text}" th:maxlength="50">
+                            </div>
+                        </div>
+                    </div>
+
                     <a href="/profile.html" class="post-header">
                         <img th:src="${user.userProfile.profilePicture}" alt="" class="user-avatar materialboxed">
                         <div class="content">
@@ -103,6 +115,23 @@
                             <img src="/img/tweet/share.png" alt="">
                         </div>
                     </div>
+
+                    <th:block th:each="child : ${post.childList}">
+                        <div class="post">
+                            <a th:href="@{/profile/} + ${child.user.username}" class="post-header">
+                                <img th:src="${child.user.userProfile.profilePicture}" alt="" class="user-avatar">
+                                <div class="content">
+                                    <div class="nameTime">
+                                        <span class="user-name" th:text="${child.user.username}"></span>
+                                        <span class="time" th:text="${#calendars.format(post.creationDate,'dd MMMM yyyy')}">3hrs</span>
+                                    </div>
+                                    <div class="contentText" th:text="${child.text}">
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </th:block>
+
                 </div>
             </th:block>
         </div>
