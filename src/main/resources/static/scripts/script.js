@@ -16,7 +16,18 @@ document.querySelectorAll('#comments').forEach(item =>{
         // let parentComments = $(parent).find(".comment");
         parentComments.classList.toggle("close");
     })
-})
+});
+document.querySelectorAll('#deleteArrow').forEach(item =>{
+    item.addEventListener('click',(e)=>{
+        $item = $(item);
+        $deletePost = $item.find("deletePost");
+        $deletePost.toggle(function () {
+            $deletePost.css({display: "block"});
+        }, function () {
+            $deletePost.css({display: "none"});
+        });
+    })
+});
 $(document).ready(function(){
     $('.materialboxed').materialbox();
 });
@@ -50,4 +61,24 @@ document.getElementById('search').addEventListener('input', function(e) {
                     document.getElementById('searchResults').append(card);
                 });
             });
+});
+
+
+$("input[class='deletePost']").click(function(){
+    var $this = $(this);
+    var $post = $this.closest(".post");
+    var postId = $post.data('postId');
+
+    $.ajax({
+        type : "DELETE",
+        contentType : "application/json",
+        url : "/post",
+        data : JSON.stringify(postId),
+        dataType : 'json',
+        success : function(data) {
+            $post.remove();
+        },
+        error: function (request, status, error) {
+        }
+    });
 });

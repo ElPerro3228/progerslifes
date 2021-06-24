@@ -233,6 +233,12 @@ img {
     transition: all .3s linear;
 }
 
+.deleteArrow{
+    display: flex;
+    align-items: center;
+    transition: all .3s linear;
+}
+
 .footerItem:hover{
     transform: scale(1.1);
     background: #f28f1d71;
@@ -289,6 +295,17 @@ img {
 .exploreSearchResults li span{
     margin-left: 5px;
     color: #1a2328;
+}
+.deletePost {
+    background: white;
+    border: 1px solid #F2901D;
+    color: #F2901D;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 25px;
+    transition: background .3s linear;
 }
 @media (max-width:825px){
     .main{
