@@ -18,6 +18,7 @@ for (var i = 0; i < elements.length; i++) {
             })
                 .then((response) => {
                     if (response.ok) {
+                        $this[0].children[0].src = "/img/tweet/like_active.png";
                         $this[0].classList.toggle('delete');
                         return response.json();
                     }
@@ -39,6 +40,7 @@ for (var i = 0; i < elements.length; i++) {
             })
                 .then((response) => {
                     if (response.ok) {
+                        $this[0].children[0].src = "/img/tweet/like.png";
                         $this[0].classList.toggle('delete');
                         return response.json();
                     }

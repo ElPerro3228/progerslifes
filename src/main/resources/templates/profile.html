@@ -6,10 +6,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" th:href="@{/css/profile.css}">
     <link rel="stylesheet" th:href="@{/css/left-right.css}">
     <title>ProgersLife | Profile</title>
 </head>
+<!--/*@thymesVar id="user" type="com.progerslifes.diplom.entity.User"*/-->
+<!--/*@thymesVar id="postTemplate" type="com.progerslifes.diplom.facades.dto.PostDTO"*/-->
 <body>
     <div class="wrapper">
         <div th:replace="fragments/leftmenu :: leftmenu"></div>
@@ -23,7 +26,7 @@
             </div>
             <div class="profile">
                 <div class="background">
-                    <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar">
+                    <img th:src="${user.userProfile.profilePicture}" alt="" class="avatar materialboxed">
                     <a  th:href="@{/profile/edit}" class="editBtn">Edit Profile</a>
                 </div>
                 <p>
@@ -56,6 +59,7 @@
                         <div class="ancestor" th:if="${post.ancestor} != null">
                             <div class="content">
                                 <div class="nameTime">
+                                    <img src="/img/tweet/retweet.png" alt="">
                                     <span class="user-name" th:text="'Responded to user' + ${post.ancestor.user.username}"></span>
                                     <span class="time" th:text="${#calendars.format(post.ancestor.creationDate,'dd MMMM yyyy')}">3hrs</span>
                                 </div>
@@ -76,12 +80,12 @@
                             </div>                        
                         </a>
                         <div class="post-content">
-                            <img th:src="${post.picturePath}" alt="" class="post-img">
+                            <img th:src="${post.picturePath}" alt="" class="post-img materialboxed">
                         </div>
                         <div class="post-footer">
-                            <div class="footerItem">
+                            <div class="footerItem" id="comments">
                                 <img src="/img/tweet/comment.png" alt="">
-                                <div class="footerNum">2</div>
+                                <div class="footerNum" th:text="${post.childList.size()}"></div>
                             </div>
                             <div class="footerItem">
                                 <img src="/img/tweet/retweet.png" alt="">
@@ -89,7 +93,7 @@
                             </div>
                             <div th:if="${post.likedByCurrentUser}">
                                 <div class="footerItem likeButton delete" th:data-post-id="${post.id}">
-                                    <img src="/img/tweet/like.png" alt="">
+                                    <img src="/img/tweet/like_active.png" alt="">
                                     <div class="footerNum" th:text="${post.likesCount}"></div>
                                 </div>
                             </div>
@@ -103,22 +107,35 @@
                                 <img src="/img/tweet/share.png" alt="">
                             </div>
                         </div>
+                        <div class="comments close">
+                            <th:block th:each="child : ${post.childList}">
+                                <div class="comment">
+                                    <a th:href="@{/profile/} + ${child.user.username}" class="post-header">
+                                        <img th:src="${child.user.userProfile.profilePicture}" alt="" class="commentAvatar">
+                                        <div class="content">
+                                            <div class="nameTime">
+                                                <span class="user-name" th:text="${child.user.username}"></span>
+                                                <span class="time" th:text="${#calendars.format(post.creationDate,'dd MMMM yyyy')}">3hrs</span>
+                                            </div>
+                                            <div class="contentText" th:text="${child.text}">
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </th:block>
 
-                        <th:block th:each="child : ${post.childList}">
-                            <div class="post">
-                                <a th:href="@{/profile/} + ${child.user.username}" class="post-header">
-                                    <img th:src="${child.user.userProfile.profilePicture}" alt="" class="user-avatar">
-                                    <div class="content">
-                                        <div class="nameTime">
-                                            <span class="user-name" th:text="${child.user.username}"></span>
-                                            <span class="time" th:text="${#calendars.format(post.creationDate,'dd MMMM yyyy')}">3hrs</span>
-                                        </div>
-                                        <div class="contentText" th:text="${child.text}">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </th:block>
+                            <form th:action="@{/post}" class="newComment" method="post" th:object="${postTemplate}" enctype="multipart/form-data">
+                                <div class="create-post-body">
+                                    <img th:src="${user.userProfile.profilePicture}" alt="" class="commentAvatar">
+                                    <textarea th:field="*{text}" id="text" class="materialize-textarea" maxlength="200" data-length="200" placeholder="Comment"></textarea>
+                                    <input id="imageLoad" name="image" type="file" accept="image/png, image/jpeg" class="close">
+                                    <input type="hidden" name="ancestorId" id="ancestorId" th:value="${post.id}">
+                                    <button class="btn waves-effect waves-light commentBtn" type="submit" name="action">
+                                        <img src="/img/common/Send.png" alt="">
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
 
                     </div>
                 </th:block>

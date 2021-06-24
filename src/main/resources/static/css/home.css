@@ -30,15 +30,9 @@ textarea.materialize-textarea:focus:not([readonly]) {
     -webkit-box-shadow: 0 1px 0 0 rgb(61, 103, 194);
     box-shadow: 0 1px 0 0 rgb(61, 103, 194);
 }
-.newPost{
-    background: #ffffff;
-    margin-bottom: 16px;
-    border-top: 1px solid #E6ECF0;
-    border-bottom: 1px solid #E6ECF0;
-    padding: 10px 15px;
-}
 .create-post-body{
     display: flex;
+    align-items: center;
     margin-bottom: 15px;
 }
 .postImgs{
