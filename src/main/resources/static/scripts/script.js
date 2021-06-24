@@ -3,12 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.tooltipped');
     var instances = M.Tooltip.init(elems);
 });
-$(document).ready(function() {
-    $('input#input_text, textarea#textarea2').characterCounter();
-});
-// $( "#comments" ).click(function() {
-//     $( "#comments" ).parent(".post").children(".comments").hide("slow");
-// });
 document.querySelectorAll('#comments').forEach(item =>{
     item.addEventListener('click',(e)=>{
         let parent = e.target.closest(".post");
@@ -17,25 +11,12 @@ document.querySelectorAll('#comments').forEach(item =>{
         parentComments.classList.toggle("close");
     })
 });
-document.querySelectorAll('#deleteArrow').forEach(item =>{
-    item.addEventListener('click',(e)=>{
-        $item = $(item);
-        $deletePost = $item.find("deletePost");
-        $deletePost.toggle(function () {
-            $deletePost.css({display: "block"});
-        }, function () {
-            $deletePost.css({display: "none"});
-        });
-    })
-});
 $(document).ready(function(){
     $('.materialboxed').materialbox();
-});
-$(document).ready(function(){
     $('select').formSelect();
+    $('input#input_text, textarea#textarea2').characterCounter();
 });
 document.getElementById('search').addEventListener('input', function(e) {
-
         fetch(`http://localhost:8080/suggest?query=${document.getElementById('search').value}`,{
             method:'post',
             headers: new Headers({
@@ -63,22 +44,31 @@ document.getElementById('search').addEventListener('input', function(e) {
             });
 });
 
-
 $("input[class='deletePost']").click(function(){
     var $this = $(this);
     var $post = $this.closest(".post");
     var postId = $post.data('postId');
-
-    $.ajax({
-        type : "DELETE",
-        contentType : "application/json",
-        url : "/post",
-        data : JSON.stringify(postId),
-        dataType : 'json',
-        success : function(data) {
-            $post.remove();
-        },
-        error: function (request, status, error) {
-        }
-    });
+    fetch(`http://localhost:8080/post`,{
+        method: 'delete',
+        headers: new Headers({
+            'Autorization':'Basic',
+            'Accept':'application/json',
+            'Content-Type':'application/json'
+        }),
+        body: JSON.stringify({
+            postId: postId
+        })
+    })
+    // $.ajax({
+    //     type : "DELETE",
+    //     contentType : "application/json",
+    //     url : "/post",
+    //     data : `"postId":${postId}`,
+    //     dataType : 'json',
+    //     success : function(data) {
+    //         $post.remove();
+    //     },
+    //     error: function (request, status, error) {
+    //     }
+    // });
 });

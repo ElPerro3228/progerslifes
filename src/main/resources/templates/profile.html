@@ -104,9 +104,9 @@
                                     <div class="footerNum" th:text="${post.likesCount}"></div>
                                 </div>
                             </div>
-                            <div class="deleteArrow deleteButton">
-                                <i class="tiny material-icons">arrow_drop_down</i>
-                                <input class="deletePost" style = "display: none" th:value="'Delete Post'">
+                            <div class="footerItem">
+                                <label for="deletePost" class="deletePostLabel"></label>
+                                <input id="deletePost" name="deletePost" type="button" class="deletePost">
                             </div>
                         </div>
                         <div class="comments close">
