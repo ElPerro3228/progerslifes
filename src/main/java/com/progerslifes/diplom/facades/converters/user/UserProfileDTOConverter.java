@@ -16,6 +16,7 @@ public class UserProfileDTOConverter implements GenericConverter<UserProfileDTO,
         userProfile.setDescription(userProfileDTO.getDescription());
         userProfile.setProfilePicture(userProfileDTO.getProfilePicture());
         userProfile.setBirthDate(userProfileDTO.getBirthDate());
+        userProfile.setGithub(userProfileDTO.getGithub());
         return userProfile;
     }
 }

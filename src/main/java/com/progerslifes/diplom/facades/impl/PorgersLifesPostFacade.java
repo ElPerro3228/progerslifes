@@ -8,6 +8,7 @@ import com.progerslifes.diplom.facades.dto.PostDTO;
 import com.progerslifes.diplom.facades.user.UserFacade;
 import com.progerslifes.diplom.services.PostService;
 import com.progerslifes.diplom.services.UploadService;
+import com.progerslifes.diplom.utils.EmptyMultipartFile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -40,6 +41,9 @@ public class PorgersLifesPostFacade implements PostFacade {
     @Override
     public void savePost(PostDTO postDTO, MultipartFile image) throws IOException {
         Post post = postConverter.convert(postDTO);
+        if (image == null) {
+            image = EmptyMultipartFile.EMPTY_IMAGE;
+        }
         if ((!image.isEmpty()) && (image.getSize() != 0)) {
             savePostPicture(image, post);
         }
@@ -55,5 +59,10 @@ public class PorgersLifesPostFacade implements PostFacade {
         String imageName = StringUtils.cleanPath(image.getOriginalFilename());
         uploadService.saveFile(imagesDir, imageName, image);
         post.setPicturePath(uploadService.getPath(imagesDir, imageName));
+    }
+
+    @Override
+    public void deletePost(int postId) {
+        postService.deletePost(postId);
     }
 }

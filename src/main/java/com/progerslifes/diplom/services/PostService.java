@@ -13,4 +13,6 @@ public interface PostService {
     List<Post> getMostRelevantPosts();
 
     Post getPostById(int id);
+
+    void deletePost(int postId);
 }
