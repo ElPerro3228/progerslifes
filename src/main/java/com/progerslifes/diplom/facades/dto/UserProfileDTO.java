@@ -12,7 +12,7 @@ public class UserProfileDTO {
     @NotNull
     private int id;
     @Nullable
-    @Size(max = 45)
+    @Size(max = 256)
     private String profilePicture;
     @NotNull
     @Size(max = 45)
@@ -26,6 +26,8 @@ public class UserProfileDTO {
     @NotNull
     @Size(max = 45)
     private String description;
+    @NotNull
+    private String github;
 
     public int getId() {
         return id;
@@ -73,5 +75,13 @@ public class UserProfileDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getGithub() {
+        return github;
+    }
+
+    public void setGithub(String github) {
+        this.github = github;
     }
 }

@@ -14,6 +14,6 @@ public interface UserSolrRepository extends SolrCrudRepository<User, String> {
     @Query(value = "username:?0~")
     List<User> getUserByUsername(String username);
 
-    @Query(value = "username:?0~ OR name:?1~")
+    @Query(value = "username:?0~ OR name:?1~ OR surname:?1~")
     List<User> getUserByUsernameOrByName(String username, String name);
 }

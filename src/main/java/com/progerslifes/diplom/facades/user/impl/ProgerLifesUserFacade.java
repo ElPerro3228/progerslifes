@@ -12,6 +12,7 @@ import com.progerslifes.diplom.services.AuthenticationService;
 import com.progerslifes.diplom.services.UploadService;
 import com.progerslifes.diplom.services.UserService;
 import com.progerslifes.diplom.services.builders.UserProfileBuilder;
+import com.progerslifes.diplom.utils.EmptyMultipartFile;
 import com.progerslifes.diplom.utils.EntityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -67,6 +68,9 @@ public class ProgerLifesUserFacade implements UserFacade {
 
     @Override
     public void updateUserProfile(UserProfileDTO userProfileDTO, MultipartFile image) throws IOException {
+        if (image == null) {
+            image = EmptyMultipartFile.EMPTY_IMAGE;
+        }
         UserProfile userProfile = userProfileDTOConverter.convert(userProfileDTO);
         if ((!image.isEmpty()) && (image.getSize() != 0)) {
             saveProfilePicture(image, userProfile);

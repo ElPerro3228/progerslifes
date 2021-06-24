@@ -42,7 +42,7 @@ public class ProfilePageController {
 
     @PostMapping("/profile/edit")
     public String getProfileEditor(Model model, @Valid UserProfileDTO userProfileDTO, Errors errors,
-                                   @RequestParam("image") MultipartFile image) throws IOException {
+                                   @RequestParam( value = "image", required = false) MultipartFile image) throws IOException {
         if (!errors.hasErrors()) {
             userFacade.updateUserProfile(userProfileDTO, image);
             return "redirect:/profile";
