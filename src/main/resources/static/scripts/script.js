@@ -48,7 +48,7 @@ $("input[class='deletePost']").click(function(){
     var $this = $(this);
     var $post = $this.closest(".post");
     var postId = $post.data('postId');
-    fetch(`http://localhost:8080/post`,{
+    fetch(`http://localhost:8080/post?postId=${postId}`,{
         method: 'delete',
         headers: new Headers({
             'Autorization':'Basic',
@@ -59,16 +59,9 @@ $("input[class='deletePost']").click(function(){
             postId: postId
         })
     })
-    // $.ajax({
-    //     type : "DELETE",
-    //     contentType : "application/json",
-    //     url : "/post",
-    //     data : `"postId":${postId}`,
-    //     dataType : 'json',
-    //     success : function(data) {
-    //         $post.remove();
-    //     },
-    //     error: function (request, status, error) {
-    //     }
-    // });
+        .then((response) => {
+            if (response.ok) {
+                $post.remove();
+            }
+        });
 });
