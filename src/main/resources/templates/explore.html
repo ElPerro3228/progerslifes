@@ -35,7 +35,7 @@
                     <div th:if="${post.ancestor} != null" class="ancestor">
                         <div class="content">
                             <div class="nameTime">
-                                <span class="user-name" th:text="'Responded to user' + ${post.ancestor.user.username}"></span>
+                                <span class="user-name" th:text="'Responded to user ' + ${post.ancestor.user.username}"></span>
                                 <span class="time" th:text="${#calendars.format(post.ancestor.creationDate,'dd MMMM yyyy')}">3hrs</span>
                             </div>
                             <div class="contentText" th:text="${post.ancestor.text}" th:maxlength="50">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <a th:href="@{/profile/}" class="post-header">
+                    <a th:href="@{/profile/} + ${post.user.username}" class="post-header">
                         <img th:src="${post.user.userProfile.profilePicture}" alt="" class="user-avatar">
                         <div class="content">
                             <div class="nameTime">
@@ -118,7 +118,6 @@
             </th:block>
         </div>
     </div>
-    <div th:replace="fragments/rightmenu :: rightmenu"></div>
 </div>
 <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

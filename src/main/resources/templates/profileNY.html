@@ -71,7 +71,7 @@
                     <div class="ancestor" th:if="${post.ancestor} != null">
                         <div class="content">
                             <div class="nameTime">
-                                <span class="user-name" th:text="'Responded to user' + ${post.ancestor.user.username}"></span>
+                                <span class="user-name" th:text="'Responded to user ' + ${post.ancestor.user.username}"></span>
                                 <span class="time" th:text="${#calendars.format(post.ancestor.creationDate,'dd MMMM yyyy')}">3hrs</span>
                             </div>
                             <div class="contentText" th:text="${post.ancestor.text}" th:maxlength="50">
