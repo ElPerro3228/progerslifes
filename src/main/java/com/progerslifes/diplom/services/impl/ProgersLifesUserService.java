@@ -7,7 +7,6 @@ import com.progerslifes.diplom.repository.user.UserRepository;
 import com.progerslifes.diplom.services.AuthenticationService;
 import com.progerslifes.diplom.services.UserService;
 import com.progerslifes.diplom.services.exception.CurrentUserAlreadyFollowsUser;
-import com.progerslifes.diplom.services.exception.UserRegistrationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;

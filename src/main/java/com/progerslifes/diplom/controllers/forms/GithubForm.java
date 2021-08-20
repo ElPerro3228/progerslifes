@@ -5,9 +5,6 @@ public class GithubForm {
     private String username;
     private String githubLogin;
 
-    public GithubForm() {
-    }
-
     public String getUsername() {
         return username;
     }

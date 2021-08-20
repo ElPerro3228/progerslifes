@@ -9,6 +9,10 @@ import java.util.Set;
 
 public class EntityUtils {
 
+    private EntityUtils() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static void copyNonNullProperties(Object src, Object target) {
         BeanUtils.copyProperties(src, target, getNullPropertyNames(src));
     }

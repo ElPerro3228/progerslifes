@@ -5,7 +5,6 @@ import com.progerslifes.diplom.facades.PostFacade;
 import com.progerslifes.diplom.facades.ProfilePageFacade;
 import com.progerslifes.diplom.facades.converters.PostConverter;
 import com.progerslifes.diplom.facades.dto.PostDTO;
-import com.progerslifes.diplom.facades.user.UserFacade;
 import com.progerslifes.diplom.services.PostService;
 import com.progerslifes.diplom.services.UploadService;
 import com.progerslifes.diplom.utils.EmptyMultipartFile;
